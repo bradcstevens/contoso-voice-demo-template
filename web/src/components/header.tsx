@@ -15,12 +15,12 @@ const Header = () => {
   const user = usePersistStore(useUserStore, (state) => state.user);
   /** Current User */
   useEffect(() => {
-    if (!userState?.user) {
+    if (userState && !userState.user) {
       fetchUser().then((u) => {
-        userState?.setUser(u.name, u.email, u.image);
+        userState.setUser(u.name, u.email, u.image);
       });
     }
-  }, [userState, userState?.user]);
+  }, [userState]);
 
   const getUserIcon = () => {
     if (user && user.image && user.image !== "undefined") {
@@ -51,8 +51,8 @@ const Header = () => {
       <div className={styles.grow} />
       <div className={styles.user}>
         <div>
-          <div className={styles.username}>{user?.name}</div>
-          <div className={styles.email}>{user?.email}</div>
+          <div className={styles.username}>{user?.name || ""}</div>
+          <div className={styles.email}>{user?.email || ""}</div>
         </div>
         <div className="">{getUserIcon()}</div>
       </div>

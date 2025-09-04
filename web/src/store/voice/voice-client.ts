@@ -35,6 +35,13 @@ class VoiceClient {
 
   async start(deviceId: string | null = null) {
     console.log("Starting voice client");
+    
+    // Only start voice client in browser environment
+    if (typeof window === 'undefined') {
+      console.warn('VoiceClient start skipped: not in browser environment');
+      return;
+    }
+
     this.socket = new WebSocketClient<Message, Message>(this.url);
 
     this.player = new Player(this.setTalking);

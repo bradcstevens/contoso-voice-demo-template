@@ -22,39 +22,50 @@ export const useRealtime = (
   const voiceRef = useRef<VoiceClient | null>(null);
 
   const startRealtime = async () => {
+    // Only start in browser environment
+    if (typeof window === 'undefined') {
+      console.warn('startRealtime skipped: not in browser environment');
+      return;
+    }
+
     if (voiceRef.current) {
       await voiceRef.current.stop();
       voiceRef.current = null;
     }
 
     if (!voiceRef.current) {
-      const endpoint = WS_ENDPOINT.endsWith("/")
-        ? WS_ENDPOINT.slice(0, -1)
-        : WS_ENDPOINT;
+      try {
+        const endpoint = WS_ENDPOINT.endsWith("/")
+          ? WS_ENDPOINT.slice(0, -1)
+          : WS_ENDPOINT;
 
-      voiceRef.current = new VoiceClient(
-        `${endpoint}/api/voice`,
-        handleMessage,
-        setTalking
-      );
+        voiceRef.current = new VoiceClient(
+          `${endpoint}/api/voice`,
+          handleMessage,
+          setTalking
+        );
 
-      await voiceRef.current.start(settings.inputDeviceId);
+        await voiceRef.current.start(settings.inputDeviceId);
 
-      await voiceRef.current.send({
-        type: "messages",
-        payload: JSON.stringify(client.retrieveMessages()),
-      });
-      
-      const message = {
-        user: user!.name,
-        threshold: settings.threshold,
-        silence: settings.silence,
-        prefix: settings.prefix,
-      };
+        await voiceRef.current.send({
+          type: "messages",
+          payload: JSON.stringify(client.retrieveMessages()),
+        });
+        
+        const message = {
+          user: user!.name,
+          threshold: settings.threshold,
+          silence: settings.silence,
+          prefix: settings.prefix,
+        };
 
-      await voiceRef.current.sendUserMessage(JSON.stringify(message));
-      await voiceRef.current.sendCreateResponse();
-      setCallState("call");
+        await voiceRef.current.sendUserMessage(JSON.stringify(message));
+        await voiceRef.current.sendCreateResponse();
+        setCallState("call");
+      } catch (error) {
+        console.error('Failed to start realtime voice:', error);
+        voiceRef.current = null;
+      }
     }
   };
 

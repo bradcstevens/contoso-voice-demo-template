@@ -8,22 +8,24 @@ from jinja2 import Environment, FileSystemLoader
 
 from openai import AsyncAzureOpenAI
 from pydantic import BaseModel
+from dotenv import load_dotenv
+
+# Load environment variables BEFORE importing local modules that depend on them
+load_dotenv()
 
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from api.session import SessionManager
-from api.suggestions import SimpleMessage, create_suggestion, suggestion_requested
-from dotenv import load_dotenv
+from session import SessionManager
+from suggestions import SimpleMessage, create_suggestion, suggestion_requested
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
-from api.telemetry import init_tracing
-from api.voice import Message, RealtimeClient
-
-load_dotenv()
+from telemetry import init_tracing
+from voice import Message, RealtimeClient
 
 AZURE_VOICE_ENDPOINT = os.getenv("AZURE_VOICE_ENDPOINT", "fake_endpoint")
 AZURE_VOICE_KEY = os.getenv("AZURE_VOICE_KEY", "fake_key")
+AZURE_VOICE_DEPLOYMENT = os.getenv("AZURE_VOICE_DEPLOYMENT", "gpt-4o-realtime-preview")
 
 LOCAL_TRACING_ENABLED = os.getenv("LOCAL_TRACING_ENABLED", "true") == "true"
 init_tracing(local_tracing=LOCAL_TRACING_ENABLED)
@@ -82,10 +84,18 @@ async def suggestion(suggestion: SuggestionPostRequest):
 
 @app.post("/api/request")
 async def request(messages: List[SimpleMessage]):
-    requested = await suggestion_requested(messages)
-    return {
-        "requested": requested,
-    }
+    try:
+        requested = await suggestion_requested(messages)
+        return {
+            "requested": requested,
+        }
+    except Exception as e:
+        # Log the error for debugging
+        print(f"Error in suggestion request: {e}")
+        # Return False to prevent suggestion window from showing when there's an error
+        return {
+            "requested": False,
+        }
 
 
 @app.websocket("/api/chat")
@@ -107,6 +117,12 @@ async def chat_endpoint(websocket: WebSocket):
 
     except WebSocketDisconnect as e:
         print("Chat Socket Disconnected", e)
+    except Exception as e:
+        print(f"Error in chat endpoint: {e}")
+    finally:
+        # Clean up the session
+        if 'thread_id' in locals() and thread_id:
+            await SessionManager.close_session(thread_id)
 
 
 @app.websocket("/api/voice")
@@ -116,10 +132,10 @@ async def voice_endpoint(websocket: WebSocket):
         client = AsyncAzureOpenAI(
             azure_endpoint=AZURE_VOICE_ENDPOINT,
             api_key=AZURE_VOICE_KEY,
-            api_version="2024-10-01-preview",
+            api_version="2025-04-01-preview",
         )
         async with client.beta.realtime.connect(
-            model="gpt-4o-realtime-preview",
+            model=AZURE_VOICE_DEPLOYMENT,
         ) as realtime_client:
 
             chat_items = await websocket.receive_json()
@@ -166,6 +182,28 @@ async def voice_endpoint(websocket: WebSocket):
 
     except WebSocketDisconnect as e:
         print("Voice Socket Disconnected", e)
+    except Exception as e:
+        print(f"Error in voice endpoint: {e}")
+    finally:
+        # Ensure proper cleanup
+        if 'session' in locals():
+            await session.close()
+        if 'realtime_client' in locals():
+            try:
+                await realtime_client.close()
+            except Exception:
+                pass
 
 
 FastAPIInstrumentor.instrument_app(app, exclude_spans=["send", "receive"])
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        log_level="info"
+    )

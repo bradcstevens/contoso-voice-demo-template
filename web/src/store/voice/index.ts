@@ -21,12 +21,17 @@ export class Player {
   }
 
   async init(sampleRate: number) {
+    // Only initialize audio in browser environment
+    if (typeof window === 'undefined') {
+      console.warn('Player initialization skipped: not in browser environment');
+      return;
+    }
+    
     const audioContext = new AudioContext({ sampleRate });
     await audioContext.audioWorklet.addModule("playback-worklet.js");
 
     this.playbackNode = new AudioWorkletNode(audioContext, "playback-worklet");
     this.playbackNode.connect(audioContext.destination);
-    
   }
 
   play(buffer: Int16Array) {
@@ -58,6 +63,12 @@ export class Recorder {
 
   async start(stream: MediaStream) {
     try {
+      // Only initialize audio in browser environment
+      if (typeof window === 'undefined') {
+        console.warn('Recorder start skipped: not in browser environment');
+        return;
+      }
+      
       this.audioContext = new AudioContext({ sampleRate: 24000 });
       await this.audioContext.audioWorklet.addModule(
         "./audio-worklet-processor.js"

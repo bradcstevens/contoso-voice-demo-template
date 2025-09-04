@@ -17,9 +17,9 @@ const VoiceInput = () => {
           err.name == "NotAllowedError" ||
           err.name == "PermissionDeniedError"
         )
-          alert("Please allow camera access to use this feature.");
+          alert("Please allow microphone access to use this feature.");
       } else {
-        alert("Error accessing camera.");
+        alert("Error accessing microphone.");
         console.error(err);
       }
       return null;

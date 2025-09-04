@@ -4,8 +4,8 @@ from fastapi import WebSocket
 from prompty.tracer import trace
 from prompty.tracer import Tracer
 from fastapi.websockets import WebSocketState
-from api.chat import create_response
-from api.models import (
+from chat import create_response
+from models import (
     ClientMessage,
     send_action,
     send_context,
@@ -14,7 +14,7 @@ from api.models import (
     stream_assistant,
 )
 
-from api.voice import RealtimeClient, Message
+from voice import RealtimeClient, Message
 
 
 class ChatSession:
@@ -24,7 +24,11 @@ class ChatSession:
         self.context: List[str] = []
 
     async def send_message(self, message: Message):
-        await self.client.send_json(message.model_dump())
+        if (
+            self.client is not None
+            and self.client.client_state != WebSocketState.DISCONNECTED
+        ):
+            await self.client.send_json(message.model_dump())
 
     def add_realtime(self, realtime: RealtimeClient):
         self.realtime = realtime
@@ -61,7 +65,8 @@ class ChatSession:
                 )
 
                 # start assistant
-                await self.client.send_json(start_assistant())
+                if self.client.client_state != WebSocketState.DISCONNECTED:
+                    await self.client.send_json(start_assistant())
 
                 # create response
                 response = await create_response(
@@ -74,14 +79,15 @@ class ChatSession:
                 call = response["call"]
 
                 # send response
-                await self.client.send_json(stream_assistant(text))
-                await self.client.send_json(stop_assistant())
+                if self.client.client_state != WebSocketState.DISCONNECTED:
+                    await self.client.send_json(stream_assistant(text))
+                    await self.client.send_json(stop_assistant())
 
-                # send context
-                await self.client.send_json(send_context(context))
-                await self.client.send_json(
-                    send_action("call", json.dumps({"score": call}))
-                )
+                    # send context
+                    await self.client.send_json(send_context(context))
+                    await self.client.send_json(
+                        send_action("call", json.dumps({"score": call}))
+                    )
                 self.context.append(response["context"])
                 t(
                     Tracer.RESULT,

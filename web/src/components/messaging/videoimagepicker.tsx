@@ -15,20 +15,25 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
   const [selectedDevice, setSelectedDevice] = useState<MediaDeviceInfo>();
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const getDevices = async (): Promise<MediaDeviceInfo[] | null> => {
+  const getDevices = async (requestPermission = false): Promise<MediaDeviceInfo[] | null> => {
     try {
+      if (requestPermission) {
+        // Only request permission when explicitly needed
+        await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      }
       const devices = await navigator.mediaDevices.enumerateDevices();
       return devices.filter((device) => device.kind === "videoinput");
-    } catch (err) {
+    } catch (err: any) {
+      console.error("Error accessing camera devices:", err);
       if (err instanceof DOMException) {
         if (
-          err.name == "NotAllowedError" ||
-          err.name == "PermissionDeniedError"
-        )
+          err.name === "NotAllowedError" ||
+          err.name === "PermissionDeniedError"
+        ) {
           alert("Please allow camera access to use this feature.");
+        }
       } else {
         alert("Error accessing camera.");
-        console.error(err);
       }
       return null;
     }
@@ -56,6 +61,12 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
   };
 
   const startVideo = async (deviceId: string) => {
+    // Only start video in browser environment
+    if (typeof window === 'undefined') {
+      console.warn('Video start skipped: not in browser environment');
+      return;
+    }
+    
     if (videoRef.current) {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
@@ -64,8 +75,17 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
         videoRef.current.disablePictureInPicture = true;
         videoRef.current.srcObject = stream;
         setShowCamera(true);
-      } catch {
-        alert("Error accessing camera.");
+      } catch (err: any) {
+        console.error("Error accessing camera:", err);
+        let errorMessage = "Error accessing camera.";
+        if (err.name === "NotAllowedError") {
+          errorMessage = "Camera access denied. Please allow camera permissions to use this feature.";
+        } else if (err.name === "NotFoundError") {
+          errorMessage = "No camera found. Please connect a camera to use this feature.";
+        } else if (err.name === "NotReadableError") {
+          errorMessage = "Camera is already in use by another application.";
+        }
+        alert(errorMessage);
         videoRef.current.srcObject = null;
         setShowCamera(false);
       }
@@ -73,7 +93,8 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
   };
 
   const showVideo = async () => {
-    const devices = await getDevices();
+    // Request permission when user actually wants to use camera
+    const devices = await getDevices(true);
     if (!devices) {
       setShow(false);
       return;
@@ -90,14 +111,29 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
     setShow(true);
   };
 
+  const stopVideo = () => {
+    if (videoRef.current && videoRef.current.srcObject) {
+      const stream = videoRef.current.srcObject as MediaStream;
+      stream.getTracks().forEach(track => track.stop());
+      videoRef.current.srcObject = null;
+      setShowCamera(false);
+    }
+  };
+
   const handleVideoClick = () => {
     if (videoRef.current) {
       readAndCacheVideoFrame(videoRef.current!).then((data) => {
         if (!data) return;
         setCurrentImage(data);
+        stopVideo();
         setShow(false);
       });
     }
+  };
+
+  const handleClose = () => {
+    stopVideo();
+    setShow(false);
   };
 
   useEffect(() => {
@@ -109,6 +145,13 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
       );
     }
   }, [selectedDevice]);
+
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      stopVideo();
+    };
+  }, []);
 
   return (
     <>
@@ -142,7 +185,7 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
                     <HiOutlineVideoCamera size={24} className="buttonIcon" />
                   </div>
                 )}
-                <button className="button" onClick={() => setShow(false)}>
+                <button className="button" onClick={handleClose}>
                   <GrClose size={24} className="buttonIcon" />
                 </button>
               </div>

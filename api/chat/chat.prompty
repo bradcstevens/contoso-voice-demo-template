@@ -8,7 +8,7 @@ model:
   configuration:
     type: azure_openai
     api_version: 2024-08-01-preview
-    azure_deployment: gpt-4o-mini
+    azure_deployment: ${env:AZURE_OPENAI_DEPLOYMENT}
   parameters:
     response_format:
       type: json_schema

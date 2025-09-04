@@ -13,13 +13,13 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
-    name: "TrailMaster X4 Tent",
+    name: "Carpa TrailMaster X4",
     price: 250.0,
-    category: "Tents",
+    category: "Carpas",
     brand: "OutdoorLiving",
     description:
-      "Unveiling the TrailMaster X4 Tent from OutdoorLiving, your home away from home for your next camping adventure. Crafted from durable polyester, this tent boasts a spacious interior perfect for four occupants. It ensures your dryness under drizzly skies thanks to its water-resistant construction, and the accompanying rainfly adds an extra layer of weather protection. It offers refreshing airflow and bug defence, courtesy of its mesh panels. Accessibility is not an issue with its multiple doors and interior pockets that keep small items tidy. Reflective guy lines grant better visibility at night, and the freestanding design simplifies setup and relocation. With the included carry bag, transporting this convenient abode becomes a breeze. Be it an overnight getaway or a week-long nature escapade, the TrailMaster X4 Tent provides comfort, convenience, and concord with the great outdoors. Comes with a two-year limited warranty to ensure customer satisfaction.",
-    slug: "trailmaster-x4-tent",
+      "Presentamos la Carpa TrailMaster X4 de OutdoorLiving, tu hogar lejos de casa para tu próxima aventura de campamento. Fabricada con poliéster duradero, esta carpa cuenta con un interior espacioso perfecto para cuatro ocupantes. Garantiza que te mantengas seco bajo cielos llovizosos gracias a su construcción resistente al agua, y el cobertor incluido añade una capa extra de protección contra el clima. Ofrece flujo de aire refrescante y defensa contra insectos, cortesía de sus paneles de malla. La accesibilidad no es un problema con sus múltiples puertas y bolsillos interiores que mantienen los artículos pequeños ordenados. Las cuerdas reflectantes otorgan mejor visibilidad durante la noche, y el diseño independiente simplifica la instalación y reubicación. Con la bolsa de transporte incluida, transportar esta conveniente morada se vuelve muy fácil. Ya sea una escapada de una noche o una aventura en la naturaleza de una semana, la Carpa TrailMaster X4 proporciona comodidad, conveniencia y armonía con el aire libre. Viene con una garantía limitada de dos años para asegurar la satisfacción del cliente.",
+    slug: "carpa-trailmaster-x4",
     manual: "/manuals/product_info_1.md",
     images: [
       "/images/1/242e7165-7c79-4f97-8e63-280f9f8982e2.png",
@@ -31,13 +31,13 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    name: "Adventurer Pro Backpack",
+    name: "Mochila Adventurer Pro",
     price: 90.0,
-    category: "Backpacks",
+    category: "Mochilas",
     brand: "HikeMate",
     description:
-      "Venture into the wilderness with the HikeMate's Adventurer Pro Backpack! Uniquely designed with ergonomic comfort in mind, this backpack ensures a steadfast journey no matter the mileage. It boasts a generous 40L capacity wrapped up in durable nylon fabric ensuring its long-lasting performance on even the most rugged pursuits. It's meticulously fashioned with multiple compartments and pockets for organized storage, hydration system compatibility, and adjustable padded shoulder straps all in a lightweight construction. The added features of a sternum strap and hip belt enhance stability without compromising on comfort. The Adventurer Pro Backpack also prioritizes your safety with its reflective accents for when night falls. This buoyant beauty does more than carry your essentials; it carries the promise of a stress-free adventure!",
-    slug: "adventurer-pro-backpack",
+      "¡Aventúrate en la naturaleza con la Mochila Adventurer Pro de HikeMate! Diseñada únicamente con la comodidad ergonómica en mente, esta mochila asegura un viaje constante sin importar el kilometraje. Cuenta con una generosa capacidad de 40L envuelta en tela de nylon duradero asegurando su rendimiento duradero incluso en las persecuciones más difíciles. Está meticulosamente confeccionada con múltiples compartimentos y bolsillos para almacenamiento organizado, compatibilidad con sistema de hidratación, y correas para hombros acolchadas ajustables todo en una construcción liviana. Las características añadidas de una correa pectoral y cinturón de cadera mejoran la estabilidad sin comprometer la comodidad. La Mochila Adventurer Pro también prioriza tu seguridad con sus acentos reflectantes para cuando caiga la noche. ¡Esta belleza flotante hace más que cargar tus esenciales; lleva la promesa de una aventura sin estrés!",
+    slug: "mochila-adventurer-pro",
     manual: "/manuals/product_info_2.md",
     images: [
       "/images/2/0b0e0e52-e3bf-4bf7-b1e1-3989c91d51a9.png",
@@ -49,13 +49,13 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    name: "Summit Breeze Jacket",
+    name: "Chaqueta Summit Breeze",
     price: 120.0,
-    category: "Hiking Clothing",
+    category: "Ropa de Senderismo",
     brand: "MountainStyle",
     description:
-      "Discover the joy of hiking with MountainStyle's Summit Breeze Jacket. This lightweight jacket is your perfect companion for outdoor adventures. Sporting a trail-ready, windproof design and a water-resistant fabric, it's ready to withstand any weather. The breathable polyester material and adjustable cuffs keep you comfortable, whether you're ascending a mountain or strolling through a park. And its sleek black color adds style to function. The jacket features a full-zip front closure, adjustable hood, and secure zippered pockets. Experience the comfort of its inner lining and the convenience of its packable design. Crafted for night trekkers too, the jacket has reflective accents for enhanced visibility. Rugged yet chic, the Summit Breeze Jacket is more than a hiking essential, it's the gear that inspires you to reach new heights. Choose adventure, choose the Summit Breeze Jacket.",
-    slug: "summit-breeze-jacket",
+      "Descubre la alegría del senderismo con la Chaqueta Summit Breeze de MountainStyle. Esta chaqueta liviana es tu compañera perfecta para aventuras al aire libre. Con un diseño listo para senderos, resistente al viento y una tela resistente al agua, está lista para resistir cualquier clima. El material de poliéster transpirable y los puños ajustables te mantienen cómodo, ya sea que estés ascendiendo una montaña o paseando por un parque. Y su elegante color negro añade estilo a la función. La chaqueta cuenta con cierre frontal de cremallera completa, capucha ajustable y bolsillos con cremallera seguros. Experimenta la comodidad de su forro interior y la conveniencia de su diseño empacable. Diseñada también para excursionistas nocturnos, la chaqueta tiene acentos reflectantes para mayor visibilidad. Resistente pero elegante, la Chaqueta Summit Breeze es más que un esencial de senderismo, es el equipo que te inspira a alcanzar nuevas alturas. Elige aventura, elige la Chaqueta Summit Breeze.",
+    slug: "chaqueta-summit-breeze",
     manual: "/manuals/product_info_3.md",
     images: [
       "/images/3/22ae32ed-7f8f-4238-b7f1-fe5f1dd5a449.png",
@@ -67,13 +67,13 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    name: "TrekReady Hiking Boots",
+    name: "Botas de Senderismo TrekReady",
     price: 140.0,
-    category: "Hiking Footwear",
+    category: "Calzado de Senderismo",
     brand: "TrekReady",
     description:
-      "Introducing the TrekReady Hiking Boots - stepping up your hiking game, one footprint at a time! Crafted from leather, these stylistic Trailmates are made to last. TrekReady infuses durability with its reinforced stitching and toe protection, making sure your journey is never stopped short. Comfort? They have that covered too! The boots are a haven with their breathable materials, cushioned insole, with padded collar and tongue; all nestled neatly within their lightweight design. As they say, it's what's inside that counts - so inside you'll find a moisture-wicking lining that quarantines stank and keeps your feet fresh as that mountaintop breeze. Remember the fear of slippery surfaces? With these boots, you can finally tell it to 'take a hike'! Their shock-absorbing midsoles and excellent traction capabilities promise stability at your every step. Beautifully finished in a traditional lace-up system, every adventurer deserves a pair of TrekReady Hiking Boots. Hike more, worry less!",
-    slug: "trekready-hiking-boots",
+      "¡Presentamos las Botas de Senderismo TrekReady - mejorando tu juego de senderismo, una pisada a la vez! Fabricadas en cuero, estas compañeras estilísticas de senderos están hechas para durar. TrekReady infunde durabilidad con su costura reforzada y protección de punta, asegurando que tu viaje nunca se detenga prematuramente. ¿Comodidad? ¡También tienen eso cubierto! Las botas son un refugio con sus materiales transpirables, plantilla acolchada, con collar y lengüeta acolchados; todo anidado ordenadamente dentro de su diseño liviano. Como dicen, lo que importa es lo que está adentro - así que adentro encontrarás un forro que absorbe la humedad que aísla los olores y mantiene tus pies frescos como esa brisa de la cima de la montaña. ¿Recuerdas el miedo a las superficies resbaladizas? ¡Con estas botas, finalmente puedes decirle que 'se vaya de excursión'! Sus medias suelas que absorben impactos y excelentes capacidades de tracción prometen estabilidad en cada paso. Bellamente terminadas en un sistema tradicional de cordones, cada aventurero merece un par de Botas de Senderismo TrekReady. ¡Camina más, preocúpate menos!",
+    slug: "botas-senderismo-trekready",
     manual: "/manuals/product_info_4.md",
     images: [
       "/images/4/0889d8c0-bb85-4b77-a749-15682f693c49.png",
@@ -805,4 +805,37 @@ export const categories: Category[] = [
 
 export const getCategories = (): Category[] => {
   return categories;
+};
+
+// Get trending products - could be based on various criteria
+// For now, we'll select products from different categories with higher prices
+export const getTrendingProducts = (limit: number = 6): Product[] => {
+  // Create a selection of products that could be considered "trending"
+  // This could be based on sales data, popularity, newness, etc.
+  // For demo purposes, we'll select diverse products with good price points
+  const trendingIds = [8, 9, 4, 13, 14, 3]; // Mix of higher-priced items from different categories
+  
+  const trendingProducts = products.filter(product => 
+    trendingIds.includes(product.id)
+  ).slice(0, limit);
+  
+  return trendingProducts;
+};
+
+// Alternative trending logic - could select by price range, recent additions, etc.
+export const getTrendingProductsByCategory = (): Product[] => {
+  const trending: Product[] = [];
+  
+  // Get one trending product from each category
+  categories.forEach(category => {
+    if (category.products.length > 0) {
+      // For demo, pick the most expensive item from each category as "trending"
+      const topProduct = category.products.reduce((prev, current) => 
+        (prev.price > current.price) ? prev : current
+      );
+      trending.push(topProduct);
+    }
+  });
+  
+  return trending;
 };

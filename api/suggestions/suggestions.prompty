@@ -7,8 +7,8 @@ model:
   api: chat
   configuration:
     type: azure_openai
-    api_version: 2024-07-01-preview
-    azure_deployment: gpt-4o-mini
+    api_version: 2024-12-01-preview
+    azure_deployment: ${env:AZURE_OPENAI_DEPLOYMENT}
 sample:
   customer: Brad Stevens
   products: ${file:products.json}

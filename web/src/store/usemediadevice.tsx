@@ -25,10 +25,15 @@ export const useMediaDevices = (requestPermission: boolean = false) => {
     const handleDeviceChange = async () => {
       try {
         if (requestPermission) {
-          await navigator.mediaDevices.getUserMedia({
-            audio: true,
-            video: false,
-          });
+          try {
+            await navigator.mediaDevices.getUserMedia({
+              audio: true,
+              video: false,
+            });
+          } catch (permissionErr) {
+            console.warn("Permission request failed:", permissionErr);
+            // Continue without permissions to get device list (without labels)
+          }
         }
 
         const mediaDevices = await navigator.mediaDevices.enumerateDevices();
