@@ -63,7 +63,7 @@ const Chat = ({ options }: Props) => {
     if (stateRef.current) {
       // get current message
       const turn: Turn = {
-        name: user?.name || "Seth Juarez",
+        name: user?.name || "Brad Stevens",
         avatar: user?.image || "undefined",
         image: stateRef.current.currentImage,
         message: stateRef.current.message,
@@ -73,7 +73,7 @@ const Chat = ({ options }: Props) => {
 
       // can replace with current user
       stateRef.current.sendMessage(
-        user?.name || "Seth Juarez",
+        user?.name || "Brad Stevens",
         user?.image || "undefined"
       );
       // reset image

@@ -2,7 +2,7 @@
 name: Contoso Outdoor Writer
 description: This prompt is used to write a marketing like description of a bunch of products
 authors:
-  - Seth Juarez
+  - Brad Stevens
 model:
   api: chat
   configuration:

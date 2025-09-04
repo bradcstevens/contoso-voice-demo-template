@@ -2,7 +2,7 @@
 name: Contoso Outdoor Writer
 description: This prompt is used to write a marketing like description of a bunch of products
 authors:
-  - Seth Juarez
+  - Brad Stevens
 model:
   api: chat
   configuration:
@@ -10,7 +10,7 @@ model:
     api_version: 2024-07-01-preview
     azure_deployment: gpt-4o-mini
 sample:
-  customer: Seth Juarez
+  customer: Brad Stevens
   products: ${file:products.json}
   purchases: ${file:purchases.json}
   context: ${file:messages.json}

@@ -27,7 +27,7 @@ async def create_response(
 if __name__ == "__main__":
     import asyncio
 
-    customer = "Seth Juarez"
+    customer = "Brad Stevens"
     question = "My friend just sent me this and I'm worried I don't have the right gear for my camping trip. Can you help me? CALL ME"
     context: List[str] = []
     image = "winter.jpg"

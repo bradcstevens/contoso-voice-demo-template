@@ -2,7 +2,7 @@
 name: Contoso Wireless Chat Support
 description: Provide support to customers who have questions about their products in a text based medium.
 authors:
-  - Seth Juarez
+  - Brad Stevens
 model:
   api: chat
   configuration:
@@ -15,7 +15,7 @@ model:
       json_schema: ${file:schema.json}
 
 sample:
-  customer: Seth
+  customer: Brad
   context: []
   catalog: ${file:products.json}
   purchases: ${file:purchases.json}

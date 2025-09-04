@@ -39,9 +39,9 @@ const Voice = () => {
   const settingsRef = useRef<HTMLDivElement>(null);
 
   const user = usePersistStore(useUserStore, (state) => state.user) || {
-    name: "Seth Juarez",
-    email: "seth.juarez@microsoft.com",
-    image: "/people/sethjuarez.jpg",
+    name: "Brad Stevens",
+    email: "bradstevens@microsoft.com",
+    image: "/people/bradstevens.jpg",
   };
 
   const handleServerMessage = async (serverEvent: Message) => {
@@ -58,7 +58,7 @@ const Voice = () => {
             setSuggestions(true);
             suggestionsRef.current = true;
             const task = await startSuggestionTask(
-              user?.name || "Seth",
+              user?.name || "Brad",
               messages
             );
             for await (const chunk of task) {

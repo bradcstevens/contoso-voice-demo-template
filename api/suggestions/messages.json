@@ -9,11 +9,11 @@
   },
   {
     "name": "assistant",
-    "text": "Hello, Seth! I can hear you loud and clear. How can I help you today?"
+    "text": "Hello, Brad! I can hear you loud and clear. How can I help you today?"
   },
   {
     "name": "assistant",
-    "text": "Absolutely, Seth!"
+    "text": "Absolutely, Brad!"
   },
   {
     "name": "user",
@@ -37,7 +37,7 @@
   },
   {
     "name": "assistant",
-    "text": "STATE: MOVED TO CONCIERGE PAGE \n\nGreat, Seth! I see you've moved to the concierge page. I'll guide you through the options there to show you these products. First up, let's look at the MountainDream Sleeping Bag. Scroll down to find it, and you can check out the details. Ready when you are!"
+    "text": "STATE: MOVED TO CONCIERGE PAGE \n\nGreat, Brad! I see you've moved to the concierge page. I'll guide you through the options there to show you these products. First up, let's look at the MountainDream Sleeping Bag. Scroll down to find it, and you can check out the details. Ready when you are!"
   },
   {
     "name": "user",
@@ -65,11 +65,11 @@
   },
   {
     "name": "assistant",
-    "text": "I'm here, Seth! To get started, please go to the concierge page on our website. Once you're there, I'll walk you through the products that will keep you warm and cozy on your snow camping trip. Let me know when you're ready, and we'll get started!"
+    "text": "I'm here, Brad! To get started, please go to the concierge page on our website. Once you're there, I'll walk you through the products that will keep you warm and cozy on your snow camping trip. Let me know when you're ready, and we'll get started!"
   },
   {
     "name": "assistant",
-    "text": "Perfect, Seth! Let's start with"
+    "text": "Perfect, Brad! Let's start with"
   },
   {
     "name": "user",
@@ -81,6 +81,6 @@
   },
   {
     "name": "assistant",
-    "text": "You're welcome, Seth! Your order is all set. Enjoy your snow camping trip, and stay warm out there! If you need anything else, just let me know. Have a great day!"
+    "text": "You're welcome, Brad! Your order is all set. Enjoy your snow camping trip, and stay warm out there! If you need anything else, just let me know. Have a great day!"
   }
 ]

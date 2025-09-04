@@ -15,14 +15,14 @@ const defaultUser: Claim[] = [
     user_claims: [
       {
         typ: "name",
-        val: "Seth Juarez",
+        val: "Brad Stevens",
       },
       {
         typ: "preferred_username",
-        val: "sejuare@microsoft.com",
+        val: "bradstevens@microsoft.com",
       },
     ],
-    user_id: "Seth.Juarez@microsoft.com",
+    user_id: "bradstevens@microsoft.com",
     other: "sdsd",
   },
 ];
@@ -56,7 +56,7 @@ export const fetchUser = async (): Promise<User> => {
   }
 
   const name =
-    u[0].user_claims.find((c) => c.typ === "name")?.val || "Seth Juarez";
+    u[0].user_claims.find((c) => c.typ === "name")?.val || "Brad Stevens";
   const email = u[0].user_id;
   const image = `${WEB_ENDPOINT}/people/${name
     .toLowerCase()
