@@ -61,15 +61,34 @@ class VoiceClient {
       autoGainControl: true,
     };
 
-    if (deviceId) {
+    if (deviceId && deviceId !== "default") {
       console.log("Using device:", deviceId);
       audio = { ...audio, deviceId: { exact: deviceId } };
     }
 
     console.log(audio);
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: audio,
-    });
+    let stream: MediaStream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({
+        audio: audio,
+      });
+    } catch (error) {
+      if (error instanceof Error && error.name === 'OverconstrainedError') {
+        console.warn('Exact device constraints failed, trying with fallback audio settings');
+        // Fallback to basic audio constraints without specific device
+        const fallbackAudio = {
+          sampleRate: 24000,
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        };
+        stream = await navigator.mediaDevices.getUserMedia({
+          audio: fallbackAudio,
+        });
+      } else {
+        throw error;
+      }
+    }
 
     this.recorder.start(stream);
     this.startResponseListener();

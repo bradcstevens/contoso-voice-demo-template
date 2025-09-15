@@ -8,4 +8,6 @@
   "mypy-type-checker.args": [
     "--check-untyped-defs"
   ],
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": [],
 }

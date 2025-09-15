@@ -49,10 +49,13 @@ export const fetchUser = async (): Promise<User> => {
     if (response.ok) {
       console.log("using easyauth user")
       u = await response.json();
+    } else if (response.status !== 404) {
+      // Only log errors that aren't expected 404s
+      console.warn(`Auth endpoint returned status: ${response.status}`);
     }
-  } catch {
-    // ignore
-    console.log("Error fetching user");
+  } catch (error) {
+    // Only log unexpected errors
+    console.debug("Auth endpoint not available, using default user");
   }
 
   const name =
