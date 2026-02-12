@@ -17,7 +17,7 @@ graph LR
         Suggest["Suggestions<br/>Engine"]
     end
 
-    subgraph Azure["Azure OpenAI"]
+    subgraph Azure["Azure AI Foundry — Azure OpenAI"]
         MR["Model Router<br/>(Chat Completions)"]
         RT["gpt-realtime-mini<br/>(Realtime Voice API)"]
     end
@@ -40,7 +40,7 @@ graph LR
 
 - **Node.js** 18+ and npm
 - **Python** 3.10+
-- **Azure OpenAI** resource with the following deployments:
+- **Azure OpenAI** resource (via Azure AI Foundry) with the following deployments:
   - `model-router` -- Azure Model Router for text chat and suggestions
   - `gpt-realtime-mini` -- for real-time voice conversations
 - A browser that supports the Web Audio API and `getUserMedia` (Chrome, Edge, etc.)
@@ -66,8 +66,8 @@ Edit `api/.env` and fill in your Azure OpenAI credentials:
 
 | Variable | Description |
 |---|---|
-| `AZURE_VOICE_ENDPOINT` | Azure Cognitive Services endpoint for Realtime API |
-| `AZURE_VOICE_KEY` | Azure Cognitive Services API key |
+| `AZURE_VOICE_ENDPOINT` | Azure AI Services endpoint for Realtime API |
+| `AZURE_VOICE_KEY` | Azure AI Services API key |
 | `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint for chat completions |
 | `AZURE_OPENAI_API_KEY` | Azure OpenAI API key |
 | `AZURE_VOICE_DEPLOYMENT` | Realtime API deployment name (default: `gpt-realtime-mini`) |
