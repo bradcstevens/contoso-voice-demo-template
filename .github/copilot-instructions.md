@@ -1,8 +1,8 @@
-# Contoso Voice Agent - Project Context
+# DigiKey Voice Agent - Project Context
 
 ## Project Overview
 
-The Contoso Voice Agent is a sophisticated full-stack AI-powered application that combines text chat and voice calling capabilities to provide personalized product recommendations and customer support. The system serves as a retail assistant for Contoso Outdoor Company, helping customers discover and purchase outdoor gear through natural conversations.
+The DigiKey Voice Agent is a sophisticated full-stack AI-powered application that combines text chat and voice calling capabilities to provide personalized product recommendations and customer support. The system serves as a retail assistant for DigiKey Electronics, helping customers discover and purchase electronic components through natural conversations.
 
 ## Architecture
 
@@ -50,7 +50,7 @@ The Contoso Voice Agent is a sophisticated full-stack AI-powered application tha
 **AI & Data**
 - **Language Model**: Azure OpenAI GPT-4o for chat and suggestions
 - **Voice Processing**: Azure OpenAI Realtime API for voice conversations
-- **Product Data**: JSON-based product catalog (20 outdoor products)
+- **Product Data**: JSON-based product catalog (DigiKey electronic components)
 - **User Data**: Purchase history and preferences in JSON format
 - **Prompt Engineering**: Structured prompty files for different scenarios
 
@@ -141,10 +141,10 @@ The Contoso Voice Agent is a sophisticated full-stack AI-powered application tha
 ### Data Layer
 
 #### Product Catalog
-- **20 Outdoor Products**: Tents, backpacks, clothing, accessories
-- **Rich Metadata**: Prices, descriptions, categories, brands, features
-- **Image Assets**: Product photography in `/web/public/images`
-- **Product Manuals**: Detailed specifications in `/web/public/manuals`
+- **Electronic Components**: Capacitors, resistors, connectors, semiconductors
+- **Rich Metadata**: Prices, descriptions, categories, manufacturers, specifications
+- **Image Assets**: Product images sourced from DigiKey API
+- **Datasheets**: Available via DigiKey product links
 
 #### User Data
 - **Purchase History**: Previous orders and preferences
@@ -160,9 +160,9 @@ The Contoso Voice Agent is a sophisticated full-stack AI-powered application tha
 # Example from chat.prompty
 ---
 name: Chat
-description: A chat function for the Contoso Outdoor Company assistant
+description: A chat function for the DigiKey Electronics assistant
 authors:
-  - Contoso
+  - DigiKey
 model:
   api: chat
   configuration:
@@ -279,4 +279,4 @@ class ConversationSession:
 - **Environment Variables**: Azure credential management
 - **Package Dependencies**: Version compatibility
 
-This documentation provides a comprehensive understanding of the Contoso Voice Agent project, enabling AI assistants and developers to effectively navigate, understand, and contribute to the codebase.
+This documentation provides a comprehensive understanding of the DigiKey Voice Agent project, enabling AI assistants and developers to effectively navigate, understand, and contribute to the codebase.

@@ -1,0 +1,139 @@
+/* ============================================
+   Resources Section (Tools / Services / Content)
+   White-card three-column layout with SVG icons,
+   matching DigiKey homepage design.
+   ============================================ */
+
+.resourcesSection {
+  background-color: var(--dk-gray-bg);
+  padding: 1.5rem 0;
+}
+
+.resourcesInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding: 0 1.5rem;
+}
+
+/* ---- Card ---- */
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: var(--color-white);
+  border: 1px solid var(--dk-border);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+.cardBody {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  min-width: 130px;
+  padding: 1rem;
+}
+
+/* ---- Heading ---- */
+
+.columnHeading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dk-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 1rem 0;
+}
+
+/* ---- Link list ---- */
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.linkItem {
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: block;
+  padding: 0.3125rem 0;
+  font-size: 0.8125rem;
+  color: var(--dk-dark);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+.link:hover {
+  color: var(--dk-red);
+  text-decoration: underline;
+}
+
+/* ---- SVG Icon ---- */
+
+.icon {
+  width: 100px;
+  height: 100px;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  .resourcesInner {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .card {
+    min-height: auto;
+  }
+
+  .cardIcon {
+    width: 100px;
+    min-width: 100px;
+    padding: 0.75rem;
+  }
+
+  .icon {
+    width: 76px;
+    height: 76px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .resourcesInner {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .cardIcon {
+    width: 100px;
+    min-width: 100px;
+  }
+
+  .icon {
+    width: 80px;
+    height: 80px;
+  }
+}

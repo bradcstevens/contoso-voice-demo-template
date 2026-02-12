@@ -1,0 +1,118 @@
+/* Incoming Call Overlay - shown when assistant triggers a voice call */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border-radius: 0.5rem;
+  z-index: 10;
+  gap: 1.5rem;
+}
+
+/* Ringing icon container with pulse animation */
+.ringContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--color-emerald-500);
+  animation: ringPulse 1.5s ease-in-out infinite;
+}
+
+.ringIcon {
+  color: var(--color-white);
+}
+
+@keyframes ringPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* Caller info text */
+.callerInfo {
+  text-align: center;
+  color: var(--color-white);
+}
+
+.callerName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.callerLabel {
+  font-size: 0.875rem;
+  color: var(--color-zinc-300);
+}
+
+/* Action buttons row */
+.actions {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.acceptCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-emerald-500);
+  color: var(--color-white);
+  transition: background-color 0.15s ease;
+}
+
+.acceptCircle:hover {
+  background-color: var(--color-emerald-600);
+}
+
+.declineCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-red-500);
+  color: var(--color-white);
+  transition: background-color 0.15s ease;
+}
+
+.declineCircle:hover {
+  background-color: var(--color-red-600);
+}
+
+.actionLabel {
+  font-size: 0.75rem;
+  color: var(--color-zinc-300);
+  user-select: none;
+}

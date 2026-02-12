@@ -53,7 +53,7 @@ export const fetchUser = async (): Promise<User> => {
       // Only log errors that aren't expected 404s
       console.warn(`Auth endpoint returned status: ${response.status}`);
     }
-  } catch (error) {
+  } catch {
     // Only log unexpected errors
     console.debug("Auth endpoint not available, using default user");
   }

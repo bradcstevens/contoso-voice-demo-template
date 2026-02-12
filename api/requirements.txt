@@ -4,6 +4,7 @@ python-dotenv
 pytest-asyncio
 fastapi[standard]
 prompty[azure,serverless]==0.1.47
+openai>=1.59.0
 opentelemetry-instrumentation
 azure-monitor-opentelemetry-exporter
 opentelemetry-instrumentation-fastapi

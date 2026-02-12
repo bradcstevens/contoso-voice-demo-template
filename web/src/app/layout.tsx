@@ -6,9 +6,9 @@ import styles from './layout.module.css';
 
 
 export const metadata: Metadata = {
-  title: "Contoso Outdoors",
+  title: "DigiKey",
   description:
-    "Embrace Adventure with Contoso Outdoors - Your Ultimate Partner in Exploring the Unseen!",
+    "AI-powered electronics component recommendations and expert product assistance",
 };
 
 export default function RootLayout({

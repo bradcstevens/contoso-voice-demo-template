@@ -7,7 +7,10 @@
   margin-left: 2rem;
   margin-bottom: 2rem;
   flex-direction: column;
-  z-index: 10;
+}
+
+.voiceWithContent {
+  z-index: 9999;
 }
 
 .voiceWindow {

@@ -1,0 +1,147 @@
+/* ============================================
+   Featured Manufacturers - Logo carousel
+   ============================================ */
+
+.section {
+  background-color: var(--color-white);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--dk-border);
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--dk-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.viewAll {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--dk-red);
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+/* ---- Carousel ---- */
+
+.carouselWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoGrid {
+  display: flex;
+  flex: 1;
+  gap: 0.75rem;
+}
+
+.logoCard {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border: 1px solid var(--dk-border);
+  border-radius: 3px;
+  background-color: var(--color-white);
+  padding: 0.5rem;
+}
+
+.logoText {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-zinc-600);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--dk-border);
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-zinc-500);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.arrow:hover {
+  border-color: var(--color-zinc-400);
+  color: var(--dk-dark);
+}
+
+.arrowLeft {}
+.arrowRight {}
+
+/* ---- Dots ---- */
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 0.75rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-zinc-400);
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dot:hover {
+  border-color: var(--color-zinc-600);
+}
+
+.dotActive {
+  background-color: var(--dk-dark);
+  border-color: var(--dk-dark);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 0 1rem;
+  }
+
+  .logoGrid {
+    flex-wrap: wrap;
+  }
+
+  .logoCard {
+    flex: 0 0 calc(25% - 0.5625rem);
+  }
+}

@@ -1,0 +1,28 @@
+/* ============================================
+   Company Description paragraph
+   ============================================ */
+
+.section {
+  background-color: var(--color-white);
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--dk-border);
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.text {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--color-zinc-600);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 0 1rem;
+  }
+}

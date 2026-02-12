@@ -41,12 +41,15 @@ type Props = {
 };
 
 const Content = ({ suggestions, debug, onClose }: Props) => {
-  const [content, setContent] = useState<string[]>(
-    suggestions ? suggestions : []
-  );
+  // Use the live suggestions prop so streaming updates are reflected in real-time.
+  // Fall back to local state only for debug actions (clear/create).
+  const [localContent, setLocalContent] = useState<string[]>([]);
+  const [useLocal, setUseLocal] = useState(false);
+  const content = useLocal ? localContent : (suggestions ?? []);
 
   const clear = () => {
-    setContent([]);
+    setUseLocal(true);
+    setLocalContent([]);
   };
 
   const close = () => {
@@ -54,10 +57,11 @@ const Content = ({ suggestions, debug, onClose }: Props) => {
   };
 
   const createSuggestions = async () => {
-    setContent([]);
+    setUseLocal(true);
+    setLocalContent([]);
     const task = await startSuggestionTask("Brad", messages);
     for await (const chunk of task) {
-      setContent((prev) => [...prev, chunk]);
+      setLocalContent((prev) => [...prev, chunk]);
     }
   };
 

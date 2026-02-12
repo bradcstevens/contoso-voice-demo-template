@@ -1,0 +1,261 @@
+/* Product Data Table - DigiKey Product Listing */
+
+.tableContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultSummary {
+  font-size: 0.8125rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid var(--dk-border);
+  border-radius: 0.25rem;
+}
+
+/* ---- Table ---- */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+/* ---- Header Row (Blue) ---- */
+
+.headerRow {
+  background-color: var(--dk-blue);
+  color: var(--color-white);
+}
+
+.headerCell {
+  padding: 0.625rem 0.75rem;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.headerCell:last-child {
+  border-right: none;
+}
+
+.headerCellSortable {
+  padding: 0.625rem 0.75rem;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.1s ease;
+}
+
+.headerCellSortable:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.headerCellSortable:last-child {
+  border-right: none;
+}
+
+/* ---- Alternating Row Colors ---- */
+
+.tableRowEven {
+  background-color: var(--color-white);
+}
+
+.tableRowOdd {
+  background-color: var(--dk-gray-bg);
+}
+
+.tableRowEven:hover,
+.tableRowOdd:hover {
+  background-color: #e8f0fe;
+}
+
+/* ---- Table Cells ---- */
+
+.cell {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--dk-border);
+  vertical-align: middle;
+  color: #333;
+}
+
+.imageCell {
+  padding: 0.375rem 0.75rem;
+  border-bottom: 1px solid var(--dk-border);
+  vertical-align: middle;
+  width: 60px;
+  text-align: center;
+}
+
+.productImage {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 0.125rem;
+  background-color: #fafafa;
+}
+
+.partNumberCell {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--dk-border);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.partNumberLink {
+  color: var(--dk-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.partNumberLink:hover {
+  text-decoration: underline;
+  color: var(--dk-red);
+}
+
+.descriptionCell {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--dk-border);
+  vertical-align: middle;
+  color: #555;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.priceCell {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--dk-border);
+  vertical-align: middle;
+  font-weight: 700;
+  color: var(--dk-dark);
+  white-space: nowrap;
+}
+
+.stockCell {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--dk-border);
+  vertical-align: middle;
+  color: #2e7d32;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.emptyRow {
+  padding: 2rem;
+  text-align: center;
+  color: #888;
+  font-size: 0.875rem;
+}
+
+/* ---- Pagination ---- */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.pageButton {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--dk-border);
+  border-radius: 0.25rem;
+  background-color: var(--color-white);
+  color: var(--dk-blue);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.pageButton:hover:not(:disabled) {
+  background-color: var(--dk-gray-bg);
+  border-color: var(--dk-blue);
+}
+
+.pageButton:disabled {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.pageButtonActive {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--dk-blue);
+  border-radius: 0.25rem;
+  background-color: var(--dk-blue);
+  color: var(--color-white);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: default;
+}
+
+.ellipsis {
+  padding: 0 0.25rem;
+  color: #666;
+}
+
+.paginationSummary {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 860px) {
+  .tableWrapper {
+    font-size: 0.75rem;
+  }
+
+  .headerCell,
+  .headerCellSortable {
+    padding: 0.5rem;
+    font-size: 0.6875rem;
+  }
+
+  .cell,
+  .imageCell,
+  .partNumberCell,
+  .descriptionCell,
+  .priceCell,
+  .stockCell {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .productImage {
+    width: 36px;
+    height: 36px;
+  }
+
+  .descriptionCell {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 540px) {
+  .imageCell {
+    display: none;
+  }
+
+  .headerCell:first-child {
+    display: none;
+  }
+}

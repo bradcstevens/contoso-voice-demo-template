@@ -1,5 +1,5 @@
 {
-  "prompty.currentModelConfiguration": "contoso-enterprises",
+  "prompty.currentModelConfiguration": "digikey-voice-agent",
   "python.testing.pytestArgs": [
     "api"
   ],

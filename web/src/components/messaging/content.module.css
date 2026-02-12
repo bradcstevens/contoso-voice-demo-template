@@ -1,6 +1,9 @@
 .contentWindow {
   display: flex;
-  margin-bottom: 0.75rem;
+  position: fixed;
+  left: 2rem;
+  bottom: 6rem;
+  z-index: 9999;
   flex-direction: column;
   border-radius: 0.5rem;
   background-color: #ffffff;

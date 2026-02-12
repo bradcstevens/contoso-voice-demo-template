@@ -23,7 +23,7 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
       }
       const devices = await navigator.mediaDevices.enumerateDevices();
       return devices.filter((device) => device.kind === "videoinput");
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error accessing camera devices:", err);
       if (err instanceof DOMException) {
         if (
@@ -75,14 +75,14 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
         videoRef.current.disablePictureInPicture = true;
         videoRef.current.srcObject = stream;
         setShowCamera(true);
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Error accessing camera:", err);
         let errorMessage = "Error accessing camera.";
-        if (err.name === "NotAllowedError") {
+        if (err instanceof DOMException && err.name === "NotAllowedError") {
           errorMessage = "Camera access denied. Please allow camera permissions to use this feature.";
-        } else if (err.name === "NotFoundError") {
+        } else if (err instanceof DOMException && err.name === "NotFoundError") {
           errorMessage = "No camera found. Please connect a camera to use this feature.";
-        } else if (err.name === "NotReadableError") {
+        } else if (err instanceof DOMException && err.name === "NotReadableError") {
           errorMessage = "Camera is already in use by another application.";
         }
         alert(errorMessage);

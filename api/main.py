@@ -6,7 +6,6 @@ from typing import List
 from fastapi.responses import StreamingResponse
 from jinja2 import Environment, FileSystemLoader
 
-from openai import AsyncAzureOpenAI
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
@@ -22,10 +21,21 @@ from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
 from telemetry import init_tracing
 from voice import Message, RealtimeClient
+from realtime_manager import RealtimeConnectionManager
 
 AZURE_VOICE_ENDPOINT = os.getenv("AZURE_VOICE_ENDPOINT", "fake_endpoint")
 AZURE_VOICE_KEY = os.getenv("AZURE_VOICE_KEY", "fake_key")
-AZURE_VOICE_DEPLOYMENT = os.getenv("AZURE_VOICE_DEPLOYMENT", "gpt-4o-realtime-preview")
+AZURE_VOICE_DEPLOYMENT = os.getenv("AZURE_VOICE_DEPLOYMENT", "gpt-realtime")
+AZURE_VOICE_API_MODE = os.getenv("AZURE_VOICE_API_MODE", "ga").lower()  # "ga" or "preview"
+
+# Centralised realtime connection manager handles GA vs Preview client
+# creation, connection tracking, and SessionManager integration.
+realtime_mgr = RealtimeConnectionManager(
+    endpoint=AZURE_VOICE_ENDPOINT,
+    api_key=AZURE_VOICE_KEY,
+    deployment=AZURE_VOICE_DEPLOYMENT,
+    api_mode=AZURE_VOICE_API_MODE,
+)
 
 LOCAL_TRACING_ENABLED = os.getenv("LOCAL_TRACING_ENABLED", "true") == "true"
 init_tracing(local_tracing=LOCAL_TRACING_ENABLED)
@@ -120,20 +130,24 @@ async def chat_endpoint(websocket: WebSocket):
     except Exception as e:
         print(f"Error in chat endpoint: {e}")
     finally:
-        # Clean up the session
+        # Detach the WebSocket but preserve the session and its context.
+        # This allows a subsequent voice or chat reconnection to reuse
+        # the accumulated conversation context via the same thread_id.
         if 'thread_id' in locals() and thread_id:
-            await SessionManager.close_session(thread_id)
+            session = SessionManager.get_session(thread_id)
+            if session:
+                session.detach_client()
 
 
 @app.websocket("/api/voice")
 async def voice_endpoint(websocket: WebSocket):
     await websocket.accept()
     try:
-        client = AsyncAzureOpenAI(
-            azure_endpoint=AZURE_VOICE_ENDPOINT,
-            api_key=AZURE_VOICE_KEY,
-            api_version="2025-04-01-preview",
-        )
+        # Build client via the centralised RealtimeConnectionManager
+        # which handles GA vs Preview URL construction internally.
+        client = realtime_mgr.create_client()
+        print(f"Voice API mode: {'GA' if realtime_mgr.is_ga_mode else 'Preview'} (deployment={AZURE_VOICE_DEPLOYMENT})")
+
         async with client.beta.realtime.connect(
             model=AZURE_VOICE_DEPLOYMENT,
         ) as realtime_client:
@@ -152,20 +166,46 @@ async def voice_endpoint(websocket: WebSocket):
                 json.dumps(settings, indent=2),
             )
 
+            # Retrieve context from existing chat session via thread_id.
+            # The frontend sends chat items in the first message, but we
+            # also merge any accumulated context from the SessionManager
+            # so voice has full conversation history.
+            thread_id = settings.get("threadId")
+            chat_context = json.loads(message.payload)
+            if thread_id:
+                session_context = realtime_mgr.get_chat_context(thread_id)
+                if session_context:
+                    chat_context = chat_context + session_context
+                    print(f"Voice: merged {len(session_context)} context items from chat session {thread_id}")
+
             # create voice system message
-            # TODO: retrieve context from chat messages via thread id
             system_message = env.get_template("script.jinja2").render(
                 customer=settings["user"] if "user" in settings else "Brad",
                 purchases=purchases,
-                context=json.loads(message.payload),
+                context=chat_context,
                 products=products,
             )
 
-            session = RealtimeClient(
-                realtime=realtime_client, client=websocket, debug=LOCAL_TRACING_ENABLED
+            realtime_session = RealtimeClient(
+                realtime=realtime_client,
+                client=websocket,
+                debug=LOCAL_TRACING_ENABLED,
+                is_ga_mode=realtime_mgr.is_ga_mode,
+                thread_id=thread_id,
             )
 
-            await session.update_realtime_session(
+            # Register the realtime connection for tracking/cleanup.
+            if thread_id:
+                realtime_mgr.register_connection(thread_id, realtime_session)
+
+            # Register the realtime client with the chat session
+            # so the unified session tracks both modalities.
+            if thread_id:
+                existing_session = SessionManager.get_session(thread_id)
+                if existing_session:
+                    existing_session.add_realtime(realtime_session)
+
+            await realtime_session.update_realtime_session(
                 system_message,
                 threshold=settings["threshold"] if "threshold" in settings else 0.8,
                 silence_duration_ms=(
@@ -174,9 +214,14 @@ async def voice_endpoint(websocket: WebSocket):
                 prefix_padding_ms=(settings["prefix"] if "prefix" in settings else 300),
             )
 
+            # Inject structured conversation history into the realtime session
+            # so the voice model has full context from prior chat interactions.
+            if thread_id:
+                await realtime_session.inject_conversation_history(thread_id)
+
             tasks = [
-                asyncio.create_task(session.receive_realtime()),
-                asyncio.create_task(session.receive_client()),
+                asyncio.create_task(realtime_session.receive_realtime()),
+                asyncio.create_task(realtime_session.receive_client()),
             ]
             await asyncio.gather(*tasks)
 
@@ -185,9 +230,15 @@ async def voice_endpoint(websocket: WebSocket):
     except Exception as e:
         print(f"Error in voice endpoint: {e}")
     finally:
-        # Ensure proper cleanup
-        if 'session' in locals():
-            await session.close()
+        # Detach voice from the unified session (preserves chat session).
+        if 'thread_id' in locals() and thread_id:
+            realtime_mgr.unregister_connection(thread_id)
+            existing_session = SessionManager.get_session(thread_id)
+            if existing_session:
+                existing_session.detach_voice()
+        # Clean up the realtime session and connection
+        if 'realtime_session' in locals():
+            await realtime_session.close()
         if 'realtime_client' in locals():
             try:
                 await realtime_client.close()

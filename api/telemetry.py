@@ -82,7 +82,7 @@ def init_tracing(local_tracing: bool = True):
         app_insights = os.getenv("APPINSIGHTS_CONNECTIONSTRING")
 
         # Add the Azure exporter to the tracer provider
-        resource = Resource(attributes={SERVICE_NAME: "contoso-voice-api"})
+        resource = Resource(attributes={SERVICE_NAME: "digikey-voice-api"})
 
         provider = TracerProvider(resource=resource)
         provider.add_span_processor(

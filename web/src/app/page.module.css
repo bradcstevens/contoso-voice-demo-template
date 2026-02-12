@@ -1,34 +1,108 @@
-.heroContent {
-  background-position: center;
-  background-image: url("/images/hero.png");
-  background-size: cover;
-  image-rendering: high-quality;
-  background-blend-mode: multiply;
-  background-color: #0c4a6e;
+/* ============================================
+   Hero Section Layout
+   Sidebar (categories) + Banner side by side
+   ============================================ */
+
+.heroWrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  color: var(--color-zinc-100);
+  flex-direction: row;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 0;
 }
 
-.heroTitle {
-  font-size: 4.5rem;
+/* ---- Category Sidebar ---- */
+
+.categorySidebar {
+  width: 250px;
+  min-width: 250px;
+  background-color: var(--color-white);
+  border-right: 1px solid var(--dk-border);
+  padding: 0;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--dk-border);
+  background-color: var(--color-white);
+}
+
+.sidebarTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--dk-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.sidebarViewAll {
+  font-size: 0.6875rem;
   font-weight: 600;
-  text-shadow: 3px 3px 3px var(--color-zinc-900);
-  margin-bottom: 10px;
+  color: var(--dk-red);
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.02em;
 }
 
-.heroText {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 10px;
-  text-shadow: 3px 3px 3px var(--color-zinc-900);
+.sidebarViewAll:hover {
+  color: var(--dk-red-hover);
+  text-decoration: underline;
 }
 
-.heroSubText {
-  font-size: 1.25rem;
-  font-weight: 300;
-  text-shadow: 3px 3px 3px var(--color-zinc-900);
+.categoryList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+.categoryItem {
+  border-bottom: 1px solid var(--dk-border);
+}
+
+.categoryLink {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--dk-blue);
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.categoryLink:hover {
+  background-color: var(--dk-gray-bg);
+  text-decoration: underline;
+}
+
+/* ============================================
+   Responsive: Stack on small screens
+   ============================================ */
+
+@media (max-width: 768px) {
+  .heroWrapper {
+    flex-direction: column;
+  }
+
+  .categorySidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--dk-border);
+  }
+
+  .categoryList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .categoryItem {
+    border-right: 1px solid var(--dk-border);
+  }
+
+  .categoryItem:nth-child(even) {
+    border-right: none;
+  }
+
+}

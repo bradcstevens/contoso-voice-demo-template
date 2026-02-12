@@ -1,0 +1,60 @@
+/* ============================================
+   Value Proposition Bar
+   Three items: support, distribution, breadth
+   ============================================ */
+
+.section {
+  background-color: var(--dk-gray-bg);
+  border-top: 1px solid var(--dk-border);
+  border-bottom: 1px solid var(--dk-border);
+  padding: 1.25rem 0;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.cardTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--dk-dark);
+}
+
+.cardDesc {
+  font-size: 0.75rem;
+  color: var(--color-zinc-600);
+  line-height: 1.4;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+}

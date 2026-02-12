@@ -1,6 +1,42 @@
+# Environment / Secrets
 .env
+.env.local
+.env.*.local
+api/.env
+scripts/.env
+**/.env
+
+node_modules/
+# Python
 .venv
-__pycache__
-.runs/
-.mypy_cache/
+__pycache__/
+*.pyc
 .pytest_cache/
+.mypy_cache/
+
+# Node.js
+node_modules/
+
+# Build artifacts
+.runs/
+.next/
+
+# Claude Code / Development Framework
+CLAUDE.md
+.claude/
+.claude-collective/
+.taskmaster/
+.reference/
+
+# Playwright / Testing
+web/test-results/
+web/playwright-report/
+web/blob-report/
+web/playwright/.cache/
+web/screenshots/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+vitest.config.js

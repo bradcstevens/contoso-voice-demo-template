@@ -1,0 +1,168 @@
+/* Filter Sidebar - DigiKey Product Listing Filter Panel */
+
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  padding: 1rem;
+  border-right: 1px solid var(--dk-border);
+  background-color: var(--color-white);
+  overflow-y: auto;
+}
+
+.sidebarTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dk-dark);
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--dk-red);
+}
+
+.noFilters {
+  font-size: 0.8125rem;
+  color: #666;
+}
+
+/* ---- Filter Group ---- */
+
+.filterGroup {
+  margin-bottom: 1.25rem;
+}
+
+.groupTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--dk-border);
+}
+
+.groupOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+/* ---- Checkbox ---- */
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: #444;
+  cursor: pointer;
+  padding: 0.125rem 0;
+  line-height: 1.3;
+}
+
+.checkboxLabel:hover {
+  color: var(--dk-blue);
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  accent-color: var(--dk-blue);
+}
+
+.valueText {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.valueCount {
+  color: #888;
+  font-size: 0.6875rem;
+  flex-shrink: 0;
+}
+
+/* ---- Action Buttons ---- */
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--dk-border);
+}
+
+.applyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--dk-red);
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.applyButton:hover:not(:disabled) {
+  background-color: var(--dk-red-hover);
+}
+
+.applyButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.resetButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--dk-border);
+  border-radius: 0.25rem;
+  background-color: var(--color-white);
+  color: #333;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.resetButton:hover {
+  border-color: var(--dk-red);
+  color: var(--dk-red);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 860px) {
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    border-right: none;
+    border-bottom: 1px solid var(--dk-border);
+    padding: 0.75rem 1rem;
+  }
+
+  .filterGroup {
+    margin-bottom: 0.75rem;
+  }
+
+  .groupOptions {
+    max-height: 120px;
+  }
+
+  .buttonGroup {
+    flex-direction: row;
+  }
+
+  .applyButton,
+  .resetButton {
+    flex: 1;
+  }
+}

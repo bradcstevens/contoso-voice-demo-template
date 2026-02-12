@@ -1,0 +1,309 @@
+/* Category Detail Page - DigiKey Product Category */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+}
+
+/* ---- Breadcrumb ---- */
+
+.breadcrumb {
+  padding: 0.75rem 2rem;
+  font-size: 0.8125rem;
+  color: #666;
+  background-color: var(--dk-gray-bg);
+  border-bottom: 1px solid var(--dk-border);
+}
+
+.breadcrumbLink {
+  color: var(--dk-blue);
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+  margin: 0 0.375rem;
+  color: #999;
+}
+
+.breadcrumbCurrent {
+  color: #333;
+  font-weight: 500;
+}
+
+/* ---- Title Section ---- */
+
+.titleSection {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem 0.75rem;
+  border-bottom: 2px solid var(--dk-border);
+}
+
+.pageTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.resultCount {
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: 400;
+}
+
+/* ---- Category Description ---- */
+
+.descriptionSection {
+  padding: 1rem 2rem;
+  background-color: var(--dk-gray-bg);
+  border-bottom: 1px solid var(--dk-border);
+}
+
+.categoryDescription {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #444;
+  max-width: 900px;
+}
+
+/* ---- Content / Grid ---- */
+
+.content {
+  flex: 1;
+  padding: 1.5rem 2rem 3rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+/* ---- Product Card ---- */
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--dk-border);
+  border-radius: 0.375rem;
+  background-color: var(--color-white);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.productCard:hover {
+  border-color: var(--dk-blue);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.productImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  padding: 0.75rem;
+  background-color: #fafafa;
+  border-bottom: 1px solid var(--dk-border);
+}
+
+.productImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  flex: 1;
+}
+
+.partNumber {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--dk-blue);
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.dkPartNumber {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.manufacturer {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.description {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #555;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---- Key Parameters ---- */
+
+.parameters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.paramTag {
+  font-size: 0.65rem;
+  background-color: var(--dk-gray-bg);
+  color: #555;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.1875rem;
+  border: 1px solid var(--dk-border);
+  white-space: nowrap;
+}
+
+/* ---- Price & Stock ---- */
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dk-red);
+}
+
+.stock {
+  font-size: 0.7rem;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+/* ---- Not Found ---- */
+
+.notFound {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.notFoundTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem;
+}
+
+.notFoundText {
+  font-size: 0.9375rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.notFoundLink {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--dk-red);
+  color: var(--color-white);
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.notFoundLink:hover {
+  background-color: var(--dk-red-hover);
+  color: var(--color-white);
+}
+
+/* ---- Responsive: 3 columns on medium screens ---- */
+
+@media (max-width: 1200px) {
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---- Responsive: 2 columns on tablets ---- */
+
+@media (max-width: 860px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content {
+    padding: 1rem 1.5rem 2rem;
+  }
+
+  .breadcrumb {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .titleSection {
+    padding: 1.25rem 1.5rem 0.75rem;
+  }
+
+  .descriptionSection {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* ---- Responsive: 1 column on mobile ---- */
+
+@media (max-width: 540px) {
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .breadcrumb {
+    padding: 0.75rem 1rem;
+  }
+
+  .titleSection {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem;
+  }
+
+  .pageTitle {
+    font-size: 1.375rem;
+  }
+
+  .descriptionSection {
+    padding: 0.75rem 1rem;
+  }
+}

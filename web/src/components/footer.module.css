@@ -1,60 +1,383 @@
-.outerBlock {
-  margin-top: 20px;
-  margin-bottom: 40px;
+/* ============================================
+   DigiKey Footer - CSS Module
+   Matches DigiKey.com dark footer design
+   ============================================ */
+
+/* --- Newsletter Signup Bar --- */
+.newsletterBar {
+  background-color: #333333;
+  padding: 16px 0;
+  width: 100%;
 }
 
-.innerBlock {
+.newsletterInner {
+  max-width: 1280px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  border-top: solid 1px var(--color-zinc-200);
-  gap: 50px;
-}
-
-.grow {
-  flex-grow: 1;
-}
-
-.categories {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.innerCategory {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.category {
-  font-size: 1rem;
-  line-height: 1rem;
-  color: var(--color-zinc-400);
-}
-
-.baricon {
-  color: var(--color-zinc-200);
-  margin-right: 12px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 24px;
+  flex-wrap: wrap;
 }
 
-
-.icon {
-  color: var(--color-zinc-400);
+.newsletterText {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.company {
+.newsletterForm {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.newsletterInput {
+  padding: 8px 14px;
+  font-size: 0.875rem;
+  border: 1px solid #555;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  background-color: #ffffff;
+  color: #333;
+  width: 260px;
+  height: 38px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.newsletterInput::placeholder {
+  color: #999;
+}
+
+.newsletterInput:focus {
+  border-color: var(--dk-red);
+}
+
+.subscribeButton {
+  padding: 8px 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: var(--dk-red);
+  color: #ffffff;
+  border: 1px solid var(--dk-red);
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  height: 38px;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.subscribeButton:hover {
+  background-color: var(--dk-red-hover);
+  border-color: var(--dk-red-hover);
+}
+
+.newsletterConsent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 8px auto 0;
+  padding: 0 24px;
+  justify-content: center;
+}
+
+.newsletterConsent input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: var(--dk-red);
+}
+
+.newsletterConsent label {
+  color: #cccccc;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.newsletterConsent a {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+/* --- Main Footer --- */
+.footer {
+  background-color: var(--dk-dark);
+  color: #cccccc;
+  padding: 40px 0 0;
+  width: 100%;
+}
+
+.footerInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* --- Footer Columns --- */
+.footerColumn {
+  flex: 1;
+  min-width: 180px;
+}
+
+.columnTitle {
+  color: #ffffff;
+  font-size: 0.875rem;
   font-weight: 700;
-  margin-top: 11px;
-  font-size: 18px;
-  line-height: 1rem;
-  color: var(--color-zinc-400);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.columnLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.columnLinks a {
+  color: #cccccc;
+  font-size: 0.8125rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  line-height: 1.4;
+}
+
+.columnLinks a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* --- Contact Info --- */
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #cccccc;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.contactIcon {
+  color: #999999;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contactItem a {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.contactItem a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* --- Social Icons --- */
+.socialIcons {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.socialIcon {
+  color: #cccccc;
+  font-size: 1.25rem;
+  transition: color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialIcon:hover {
+  color: #ffffff;
+}
+
+/* --- App Store Badges --- */
+.appBadges {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.appBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #333333;
+  border: 1px solid #555555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #cccccc;
+  font-size: 0.6875rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+  line-height: 1.3;
+}
+
+.appBadge:hover {
+  border-color: #999999;
+  color: #ffffff;
+}
+
+.appBadgeIcon {
+  font-size: 1.25rem;
+}
+
+.appBadgeText {
+  display: flex;
+  flex-direction: column;
+}
+
+.appBadgeSmall {
+  font-size: 0.5625rem;
+  color: #999999;
+}
+
+/* --- Certifications --- */
+.certifications {
+  width: 100%;
+  border-top: 1px solid #333333;
+  margin-top: 32px;
+  padding: 20px 0;
+}
+
+.certificationsInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.certBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2a2a2a;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  padding: 8px 14px;
+  color: #999999;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.certBadgeIcon {
+  font-size: 1rem;
+}
+
+/* --- Copyright Bar --- */
+.copyrightBar {
+  background-color: #111111;
+  padding: 12px 0;
+  width: 100%;
+  border-top: 1px solid #333333;
+}
+
+.copyrightInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #999999;
+}
+
+.countryIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #cccccc;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.flag {
+  width: 20px;
+  height: 14px;
+  display: inline-block;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.copyrightText {
+  color: #999999;
+}
+
+.copyrightSeparator {
+  color: #555555;
+  margin: 0 4px;
+}
+
+.copyrightLinks {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.copyrightLinks a {
+  color: #999999;
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.copyrightLinks a:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .newsletterInner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .newsletterForm {
+    width: 100%;
+  }
+
+  .newsletterInput {
+    flex: 1;
+    width: auto;
+  }
+
+  .footerInner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footerColumn {
+    min-width: auto;
+  }
+
+  .copyrightInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .certificationsInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

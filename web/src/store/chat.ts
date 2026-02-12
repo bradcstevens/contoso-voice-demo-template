@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
 import { removeCachedBlob } from "./images";
 import { persist, createJSONStorage } from "zustand/middleware";
+import type { DigiKeyProduct } from "@/types/digikey";
+import { matchProductsFromText } from "./product-detector";
 
 export const AssistantName = "Wiry";
 
@@ -12,6 +14,8 @@ export interface Turn {
   message: string;
   status: "waiting" | "streaming" | "done" | "voice";
   type: "user" | "assistant";
+  /** Products detected in the assistant's response, displayed as inline cards */
+  products?: DigiKeyProduct[];
 }
 
 export interface ChatState {
@@ -82,19 +86,24 @@ export const useChatStore = create<ChatState>()(
           };
         }),
       addAssistantMessage: (name, message, avatar, image) =>
-        set((state) => ({
-          turns: [
-            ...state.turns,
-            {
-              name: name,
-              avatar: avatar || null,
-              image: image || null,
-              message: message,
-              status: "done",
-              type: "assistant",
-            },
-          ],
-        })),
+        set((state) => {
+          // Detect product references in the full message
+          const products = matchProductsFromText(message);
+          return {
+            turns: [
+              ...state.turns,
+              {
+                name: name,
+                avatar: avatar || null,
+                image: image || null,
+                message: message,
+                status: "done" as const,
+                type: "assistant" as const,
+                ...(products.length > 0 ? { products } : {}),
+              },
+            ],
+          };
+        }),
       startAssistantMessage: (name, avatar, image) =>
         set((state) => ({
           turns: [
@@ -112,31 +121,35 @@ export const useChatStore = create<ChatState>()(
       streamAssistantMessage: (chunk) =>
         set((state) => {
           const turns = state.turns.slice(0, -1);
-          let lastTurn = state.turns.slice(-1)[0];
-          if (lastTurn.type === "assistant" && lastTurn.status === "waiting") {
-            lastTurn.message = chunk;
-            lastTurn.status = "streaming";
-          } else {
-            lastTurn = {
-              name: lastTurn.name,
-              avatar: lastTurn.avatar,
-              image: lastTurn.image,
-              message: chunk,
-              status: "streaming",
-              type: "assistant",
-            };
-          }
-          return { turns: [...turns, lastTurn] };
+          const lastTurn = state.turns.slice(-1)[0];
+          const updatedTurn = {
+            name: lastTurn.name,
+            avatar: lastTurn.avatar,
+            image: lastTurn.image,
+            message:
+              lastTurn.type === "assistant" &&
+              (lastTurn.status === "waiting" || lastTurn.status === "streaming")
+                ? lastTurn.message + chunk
+                : chunk,
+            status: "streaming" as const,
+            type: "assistant" as const,
+          };
+          return { turns: [...turns, updatedTurn] };
         }),
       completeAssistantMessage: () =>
         set((state) => {
           const turns = state.turns.slice(0, -1);
-          const lastTurn = state.turns.slice(-1)[0];
+          const lastTurn = { ...state.turns.slice(-1)[0] };
           if (
             lastTurn.type === "assistant" &&
             lastTurn.status === "streaming"
           ) {
             lastTurn.status = "done";
+            // Detect product references in the completed message
+            const products = matchProductsFromText(lastTurn.message);
+            if (products.length > 0) {
+              lastTurn.products = products;
+            }
           }
           return { turns: [...turns, lastTurn] };
         }),

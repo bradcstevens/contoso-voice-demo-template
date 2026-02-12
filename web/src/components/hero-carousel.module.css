@@ -1,0 +1,227 @@
+/* ============================================
+   Hero Carousel - DigiKey Style
+   ============================================ */
+
+.carousel {
+  flex: 1;
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  background-color: var(--dk-dark);
+}
+
+/* ---- Slides ---- */
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  pointer-events: none;
+}
+
+.slideActive {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+.slideImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.slideOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(240, 240, 240, 0.92) 0%,
+    rgba(240, 240, 240, 0.88) 40%,
+    rgba(240, 240, 240, 0.6) 70%,
+    rgba(240, 240, 240, 0) 100%
+  );
+  z-index: 2;
+}
+
+.slideContent {
+  position: relative;
+  z-index: 3;
+  padding: 2.5rem 2rem;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 340px;
+}
+
+.slideTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--dk-red);
+  margin: 0 0 0.75rem 0;
+}
+
+.slideText {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-zinc-700);
+  margin: 0 0 1.5rem 0;
+}
+
+.slideBullets {
+  margin: 0 0 1.25rem 1.25rem;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--dk-dark);
+}
+
+.slideCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--dk-red);
+  color: var(--color-white);
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease-in-out;
+  width: fit-content;
+}
+
+.slideCta:hover {
+  background-color: var(--dk-red-hover);
+  color: var(--color-white);
+}
+
+/* ---- Arrow Navigation ---- */
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: var(--color-white);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.carousel:hover .arrow {
+  opacity: 1;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.arrowLeft {
+  left: 12px;
+}
+
+.arrowRight {
+  right: 12px;
+}
+
+/* ---- Dot Indicators ---- */
+
+.dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--color-white);
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.dotActive {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .carousel {
+    min-height: 260px;
+  }
+
+  .slideContent {
+    padding: 1.5rem 1rem;
+    min-height: 260px;
+    max-width: 100%;
+  }
+
+  .slideTitle {
+    font-size: 1.25rem;
+  }
+
+  .slideText {
+    font-size: 0.8125rem;
+  }
+
+  .slideOverlay {
+    width: 80%;
+  }
+
+  .arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .arrowLeft {
+    left: 6px;
+  }
+
+  .arrowRight {
+    right: 6px;
+  }
+}

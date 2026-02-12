@@ -1,8 +1,0 @@
-{
-  "port": 3004,
-  "appPort": 3005,
-  "autoPlugins": true,
-  "plugins": [
-    "@stagewise/react-plugin"
-  ]
-}

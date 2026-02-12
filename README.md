@@ -1,169 +1,171 @@
-# Contoso Voice Agent
+# DigiKey Web Voice Agent
 
-A sophisticated AI-powered voice and text assistant for Contoso Outdoors that provides personalized product recommendations and customer support through natural conversations.
-
-## Project Overview
-
-The Contoso Voice Agent combines text chat and voice calling capabilities to help customers discover and purchase outdoor gear. It serves as a retail assistant for Contoso Outdoor Company, creating an interactive and responsive shopping experience through AI-driven conversations.
+An AI-powered voice and text assistant for DigiKey Electronics that provides personalized product recommendations and customer support through natural conversations. Built with a Next.js frontend, a Python FastAPI backend, and Azure OpenAI for both text chat (GPT-4o) and real-time voice (Realtime API).
 
 ## Architecture
 
-```mermaid
-graph TD
-    subgraph Frontend["Frontend (Next.js)"]
-        UI["UI Components"]
-        Chat["Chat Interface"]
-        Voice["Voice Interface"]
-        WebAudio["Web Audio API"]
-        Store["State Management (Zustand)"]
-        WebSocketClient["WebSocket Client"]
-    end
-
-    subgraph Backend["Backend (FastAPI)"]
-        API["API Endpoints"]
-        Session["Session Management"]
-        WSChat["WebSocket Chat Handler"]
-        WSVoice["WebSocket Voice Handler"]
-        Suggestions["Product Suggestions"]
-    end
-
-    subgraph Azure["Azure OpenAI"]
-        GPT4o["GPT-4o"]
-        Realtime["Realtime Voice API"]
-    end
-
-    subgraph Data["Data"]
-        Products["Product Catalog"]
-        Purchases["Purchase History"]
-    end
-
-    WebSocketClient -- "WebSocket (Text)" --> WSChat
-    WebSocketClient -- "WebSocket (Audio)" --> WSVoice
-    WebAudio -- "Audio Stream" --> WebSocketClient
-    
-    WSChat --> Session
-    WSVoice --> Session
-    
-    Session --> GPT4o
-    WSVoice --> Realtime
-    
-    Products --> Suggestions
-    Purchases --> Suggestions
-    Suggestions --> GPT4o
-    
-    API -- "HTTP" --> Frontend
-    
-    Store -- "State" --> UI
-    Store -- "State" --> Chat
-    Store -- "State" --> Voice
+```
++-----------------+    WebSocket / HTTP    +------------------+
+|   Next.js       |<--------------------->|   FastAPI         |
+|   Frontend      |                       |   Backend         |
+|   (Port 3000)   |                       |   (Port 8000)     |
+|                 |    Real-time Audio     |                   |
+|   Web Audio API |---------------------->|                   |
++-----------------+    (WebSocket)        +------------------+
+                                                   |
+                                                   | Azure OpenAI
+                                                   v
+                                          +------------------+
+                                          |  GPT-4o (Chat)   |
+                                          |  Realtime API    |
+                                          |  (Voice)         |
+                                          +------------------+
 ```
 
-## Components
+**Frontend** -- Next.js 14 (App Router), TypeScript, Zustand for state management, Web Audio API for microphone capture and playback, WebSocket client for real-time chat and voice streaming.
 
-### Frontend (web/)
+**Backend** -- Python FastAPI with WebSocket endpoints for text chat and voice. Integrates with Azure OpenAI GPT-4o for chat completions and the Azure OpenAI Realtime API for voice conversations. Uses the Prompty framework for structured prompt management.
 
-- **Chat Interface**: Real-time text conversations with AI assistant
-- **Voice Interface**: Interactive voice calling system with real-time audio processing
-- **Web Audio API Integration**: Audio capture, processing, and playback
-- **State Management**: Zustand stores for global state
-- **WebSocket Communication**: Real-time message exchange with backend
-- **UI Components**: React components with TypeScript for the product catalog and interactions
+**Data** -- Product catalog, purchase history, and manufacturer data stored as JSON files. AI-powered product suggestion engine generates recommendations based on conversation context.
 
-### Backend (api/)
+## Prerequisites
 
-- **FastAPI Application**: Main backend service with WebSocket support
-- **Session Management**: Maintains the WebSocket connection to the web client and the Realtime API client
-- **AI Integration**: Connects to Azure OpenAI for natural language processing
-- **Voice Processing**: Realtime API integration for voice conversations
-- **Product Suggestions**: AI-powered product recommendation engine
+- **Node.js** 18+ and npm
+- **Python** 3.10+
+- **Azure OpenAI** resource with the following deployments:
+  - `gpt-4o` -- for text chat and suggestions
+  - `gpt-4o-realtime-preview` or `gpt-realtime` -- for voice conversations
+- A browser that supports the Web Audio API and `getUserMedia` (Chrome, Edge, etc.)
 
-### Data
+## Setup
 
-- **Product Catalog**: Information about outdoor products
-- **Purchase History**: User purchase records for personalization
-- **Conversation Context**: Maintaining conversation state across sessions
+### 1. Clone the repository
 
-### AI Integration
+```bash
+git clone <repo-url>
+cd web-voice-agent
+```
 
-- **Azure OpenAI GPT-4o**: Powering intelligent conversations
-- **Realtime API**: Enabling voice interactions
-- **Prompt Engineering**: Structured prompts for different conversation scenarios
+### 2. Configure environment variables
 
-## Technologies
+**API backend** (required):
 
-- **Frontend**:
-  - Next.js 
-  - TypeScript
-  - React
-  - Web Audio API
-  - Zustand (State Management)
-  - WebSocket Client
+```bash
+cp api/.env.example api/.env
+```
 
-- **Backend**:
-  - Python
-  - FastAPI
-  - WebSockets
-  - Azure OpenAI Client
-  - Pydantic (Data Models)
+Edit `api/.env` and fill in your Azure OpenAI credentials:
 
-- **AI & Integration**:
-  - Azure OpenAI GPT-4o
-  - Azure OpenAI Realtime API
-  - Prompty Framework
+| Variable | Description |
+|---|---|
+| `AZURE_VOICE_ENDPOINT` | Azure Cognitive Services endpoint for Realtime API |
+| `AZURE_VOICE_KEY` | Azure Cognitive Services API key |
+| `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint for chat completions |
+| `AZURE_OPENAI_API_KEY` | Azure OpenAI API key |
+| `AZURE_VOICE_DEPLOYMENT` | Realtime API deployment name (default: `gpt-realtime`) |
+| `AZURE_OPENAI_DEPLOYMENT` | Chat deployment name (default: `gpt-4o`) |
+| `AZURE_VOICE_API_MODE` | `ga` or `preview` (see `api/.env.example` for details) |
+| `LOCAL_TRACING_ENABLED` | Enable local tracing (default: `true`) |
 
-## Features
+### 3. Start the backend
 
-- Real-time text chat with AI assistant
-- Voice calling with natural language processing
-- Product recommendations based on conversation context
-- Interactive product catalog browsing
-- Session persistence for continuous conversations
-- Real-time audio processing and transmission
+```bash
+cd api
+pip install -r requirements.txt
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
 
-## Development and Deployment
+### 4. Start the frontend
 
-### Local Development
+```bash
+cd web
+npm install
+npm run dev
+```
 
-1. Backend:
-   ```bash
-   cd api
-   pip install -r requirements.txt
-   python main.py
-   ```
+The frontend will be available at `http://localhost:3000` and will connect to the backend at `ws://localhost:8000`.
 
-2. Frontend:
-   ```bash
-   cd web
-   npm install
-   npm run dev
-   ```
+### 5. VS Code (optional)
 
-3. VS Code:
-   The project includes VS Code launch configurations. You can simply press F5 in VS Code to start debugging both frontend and backend components simultaneously.
+The project includes VS Code launch configurations. Press F5 to start debugging both frontend and backend simultaneously.
 
-### Deployment
+## Project Structure
 
-Both frontend and backend include Dockerfiles for containerized deployment:
+```
+web-voice-agent/
+|-- api/                        # Python FastAPI backend
+|   |-- main.py                 # Application entry point, WebSocket endpoints
+|   |-- session.py              # Session and conversation management
+|   |-- chat/                   # Chat prompty templates and data
+|   |-- suggestions/            # Product suggestion engine
+|   |-- voice/                  # Voice script templates
+|   |-- tests/                  # Pytest test suite
+|   |-- Dockerfile
+|   +-- requirements.txt
+|
+|-- web/                        # Next.js frontend
+|   |-- src/
+|   |   |-- app/                # Next.js App Router pages
+|   |   |-- components/         # React UI components (chat, voice, product catalog)
+|   |   |-- store/              # Zustand state management (chat, voice, products)
+|   |   +-- socket/             # WebSocket client and types
+|   |-- e2e/                    # Playwright end-to-end tests
+|   |-- public/                 # Static assets (product data, images, categories)
+|   |-- Dockerfile
+|   +-- package.json
+|
+|-- scripts/                    # Utility scripts for product data curation
+|-- .github/workflows/          # CI/CD pipelines for Azure Container Apps
++-- .env.example                # Root env template (development tooling only)
+```
 
-- Frontend: `web/Dockerfile` (Exposes port 3000)
-- Backend: `api/Dockerfile`
+## CI/CD
 
-## Environment Configuration
+GitHub Actions workflows automatically build and deploy to Azure Container Apps on push to `main`:
 
-Required environment variables:
+- **`.github/workflows/azure-container-api.yml`** -- Builds and deploys the API container (triggers on changes to `api/`)
+- **`.github/workflows/azure-container-web.yml`** -- Builds and deploys the web container (triggers on changes to `web/`)
 
-- `AZURE_VOICE_ENDPOINT`: Azure OpenAI Voice API endpoint
-- `AZURE_VOICE_KEY`: Azure OpenAI API key
-- `LOCAL_TRACING_ENABLED`: Enable/disable local tracing (default: true)
+### Required GitHub configuration
 
-## Contributing
+**Repository variables:**
 
-Guidelines for contributing to this project:
+| Variable | Default | Description |
+|---|---|---|
+| `ROOT_NAME` | `digikey-voice` | Base name for container apps |
+| `AZURE_RESOURCE_GROUP` | `digikey-voice-agent` | Azure resource group |
+| `AZURE_CONTAINER_ENV` | `digikey-voice-agent-env` | Azure Container Apps environment |
 
-1. **Fork & Pull Request**: Fork the repository and create pull requests for contributions.
-2. **Coding Standards**: Follow the existing coding style and patterns in the repository.
-3. **Testing**: Add/update tests for any new features or bug fixes.
-4. **Documentation**: Update documentation to reflect any changes.
-5. **Review Process**: All submissions require review before being merged.
-6. **Issue First**: For major changes, open an issue for discussion before submitting a PR.
-7. **Security**: Report security vulnerabilities privately to the repository owners.
+**Repository secrets:**
+
+- `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID` -- Azure OIDC authentication
+- `REGISTRY_ENDPOINT`, `REGISTRY_USERNAME`, `REGISTRY_PASSWORD` -- Container registry credentials
+
+## Testing
+
+**End-to-end tests** (Playwright):
+
+```bash
+cd web
+npx playwright test
+```
+
+Test specs are in `web/e2e/` and cover homepage rendering, navigation, chat replies, product browsing, and voice interactions.
+
+**API tests** (pytest):
+
+```bash
+cd api
+pytest tests/
+```
+
+**Frontend unit tests** (Vitest):
+
+```bash
+cd web
+npm test
+```
+
+## Attribution
+
+Originally based on [contoso-voice-agent](https://github.com/sethjuarez/contoso-voice-agent) by Seth Juarez, re-built and branded for DigiKey Electronics.

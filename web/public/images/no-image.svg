@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="350" viewBox="0 0 350 350">
+  <rect width="350" height="350" fill="#f0f0f0" rx="8" />
+  <!-- Component icon -->
+  <g transform="translate(125, 100)" stroke="#b0b0b0" stroke-width="2" fill="none">
+    <!-- IC chip body -->
+    <rect x="10" y="10" width="80" height="80" rx="4" fill="#e0e0e0" />
+    <!-- Left pins -->
+    <line x1="0" y1="25" x2="10" y2="25" />
+    <line x1="0" y1="40" x2="10" y2="40" />
+    <line x1="0" y1="55" x2="10" y2="55" />
+    <line x1="0" y1="70" x2="10" y2="70" />
+    <!-- Right pins -->
+    <line x1="90" y1="25" x2="100" y2="25" />
+    <line x1="90" y1="40" x2="100" y2="40" />
+    <line x1="90" y1="55" x2="100" y2="55" />
+    <line x1="90" y1="70" x2="100" y2="70" />
+    <!-- Top pins -->
+    <line x1="25" y1="0" x2="25" y2="10" />
+    <line x1="40" y1="0" x2="40" y2="10" />
+    <line x1="55" y1="0" x2="55" y2="10" />
+    <line x1="70" y1="0" x2="70" y2="10" />
+    <!-- Bottom pins -->
+    <line x1="25" y1="90" x2="25" y2="100" />
+    <line x1="40" y1="90" x2="40" y2="100" />
+    <line x1="55" y1="90" x2="55" y2="100" />
+    <line x1="70" y1="90" x2="70" y2="100" />
+    <!-- Pin 1 dot -->
+    <circle cx="22" cy="22" r="3" fill="#b0b0b0" />
+  </g>
+  <text x="175" y="250" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#999">No Image Available</text>
+</svg>

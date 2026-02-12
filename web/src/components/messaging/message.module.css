@@ -52,7 +52,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-image: url("/images/trees.png");
+  background-image: url("/images/robot-agent.svg");
   background-size: cover;
   background-blend-mode: multiply;
   background-color: var(--color-sky-50);

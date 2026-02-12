@@ -1,0 +1,1593 @@
+[
+  {
+    "Description": {
+      "ProductDescription": "DC-DC BUCK-MODE POWER MODULE 8-2",
+      "DetailedDescription": "- 1 Non-Isolated Output DC/DC, Step Down Evaluation Board"
+    },
+    "Manufacturer": {
+      "Id": 1738,
+      "Name": "DFRobot"
+    },
+    "ManufacturerProductNumber": "DFR0571",
+    "UnitPrice": 3.0,
+    "ProductUrl": "https://www.digikey.com/en/products/detail/dfrobot/DFR0571/9559261",
+    "DatasheetUrl": "//mm.digikey.com/Volume0/opasdata/d220001/medias/docus/908/DFR0571_Web.pdf",
+    "PhotoUrl": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/497/DFR0571.jpg",
+    "ProductVariations": [
+      {
+        "DigiKeyProductNumber": "1738-1442-ND",
+        "PackageType": {
+          "Id": 3,
+          "Name": "Bulk"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 3.0,
+            "TotalPrice": 3.0
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 1738,
+          "Name": "DFRobot"
+        },
+        "QuantityAvailableforPackageType": 4316,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      }
+    ],
+    "QuantityAvailable": 4316,
+    "ProductStatus": {
+      "Id": 0,
+      "Status": "Active"
+    },
+    "BackOrderNotAllowed": false,
+    "NormallyStocking": true,
+    "Discontinued": false,
+    "EndOfLife": false,
+    "Ncnr": false,
+    "PrimaryVideoUrl": null,
+    "Parameters": [
+      {
+        "ParameterId": 1000,
+        "ParameterText": "Main Purpose",
+        "ParameterType": "String",
+        "ValueId": "337613",
+        "ValueText": "DC/DC, Step Down"
+      },
+      {
+        "ParameterId": 1001,
+        "ParameterText": "Outputs and Type",
+        "ParameterType": "String",
+        "ValueId": "830511",
+        "ValueText": "1 Non-Isolated Output"
+      },
+      {
+        "ParameterId": 2186,
+        "ParameterText": "Power - Output",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 48,
+        "ParameterText": "Voltage - Output",
+        "ParameterType": "String",
+        "ValueId": "249171",
+        "ValueText": "5V"
+      },
+      {
+        "ParameterId": 129,
+        "ParameterText": "Current - Output",
+        "ParameterType": "String",
+        "ValueId": "201594",
+        "ValueText": "3A"
+      },
+      {
+        "ParameterId": 127,
+        "ParameterText": "Voltage - Input",
+        "ParameterType": "String",
+        "ValueId": "295229",
+        "ValueText": "8V ~ 28V"
+      },
+      {
+        "ParameterId": 507,
+        "ParameterText": "Regulator Topology",
+        "ParameterType": "String",
+        "ValueId": "323617",
+        "ValueText": "Buck"
+      },
+      {
+        "ParameterId": 384,
+        "ParameterText": "Frequency - Switching",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 224,
+        "ParameterText": "Contents",
+        "ParameterType": "String",
+        "ValueId": "321631",
+        "ValueText": "Board(s)"
+      },
+      {
+        "ParameterId": 984,
+        "ParameterText": "Utilized IC / Part",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      }
+    ]
+  },
+  {
+    "Description": {
+      "ProductDescription": "IC GATE AND 1CH 2-INP SOT23-5",
+      "DetailedDescription": "AND Gate IC 1 Channel SOT-23-5"
+    },
+    "Manufacturer": {
+      "Id": 296,
+      "Name": "Texas Instruments"
+    },
+    "ManufacturerProductNumber": "SN74LVC1G08DBVR",
+    "UnitPrice": 0.1,
+    "ProductUrl": "https://www.digikey.com/en/products/detail/texas-instruments/SN74LVC1G08DBVR/385718",
+    "DatasheetUrl": "https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=https%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fsn74lvc1g08",
+    "PhotoUrl": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/4180/296%7E4073253-4%7EDBV%7E5.JPG",
+    "ProductVariations": [
+      {
+        "DigiKeyProductNumber": "296-11601-2-ND",
+        "PackageType": {
+          "Id": 1,
+          "Name": "Tape & Reel (TR)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 3000,
+            "UnitPrice": 0.03688,
+            "TotalPrice": 110.64
+          },
+          {
+            "BreakQuantity": 6000,
+            "UnitPrice": 0.03553,
+            "TotalPrice": 213.18
+          },
+          {
+            "BreakQuantity": 9000,
+            "UnitPrice": 0.03486,
+            "TotalPrice": 313.74
+          },
+          {
+            "BreakQuantity": 15000,
+            "UnitPrice": 0.03411,
+            "TotalPrice": 511.65
+          },
+          {
+            "BreakQuantity": 21000,
+            "UnitPrice": 0.03368,
+            "TotalPrice": 707.28
+          },
+          {
+            "BreakQuantity": 30000,
+            "UnitPrice": 0.03326,
+            "TotalPrice": 997.8
+          },
+          {
+            "BreakQuantity": 75000,
+            "UnitPrice": 0.03235,
+            "TotalPrice": 2426.25
+          },
+          {
+            "BreakQuantity": 150000,
+            "UnitPrice": 0.03181,
+            "TotalPrice": 4771.5
+          },
+          {
+            "BreakQuantity": 300000,
+            "UnitPrice": 0.03136,
+            "TotalPrice": 9408.0
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": false,
+        "Supplier": {
+          "Id": 296,
+          "Name": "Texas Instruments"
+        },
+        "QuantityAvailableforPackageType": 254531,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 3000,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "296-11601-1-ND",
+        "PackageType": {
+          "Id": 2,
+          "Name": "Cut Tape (CT)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.1,
+            "TotalPrice": 0.1
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.067,
+            "TotalPrice": 0.67
+          },
+          {
+            "BreakQuantity": 25,
+            "UnitPrice": 0.0584,
+            "TotalPrice": 1.46
+          },
+          {
+            "BreakQuantity": 100,
+            "UnitPrice": 0.049,
+            "TotalPrice": 4.9
+          },
+          {
+            "BreakQuantity": 250,
+            "UnitPrice": 0.04456,
+            "TotalPrice": 11.14
+          },
+          {
+            "BreakQuantity": 500,
+            "UnitPrice": 0.04184,
+            "TotalPrice": 20.92
+          },
+          {
+            "BreakQuantity": 1000,
+            "UnitPrice": 0.03962,
+            "TotalPrice": 39.62
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": false,
+        "Supplier": {
+          "Id": 296,
+          "Name": "Texas Instruments"
+        },
+        "QuantityAvailableforPackageType": 254681,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "296-11601-6-ND",
+        "PackageType": {
+          "Id": 243,
+          "Name": "Digi-Reel\u00ae"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.1,
+            "TotalPrice": 0.1
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.067,
+            "TotalPrice": 0.67
+          },
+          {
+            "BreakQuantity": 25,
+            "UnitPrice": 0.0584,
+            "TotalPrice": 1.46
+          },
+          {
+            "BreakQuantity": 100,
+            "UnitPrice": 0.049,
+            "TotalPrice": 4.9
+          },
+          {
+            "BreakQuantity": 250,
+            "UnitPrice": 0.04456,
+            "TotalPrice": 11.14
+          },
+          {
+            "BreakQuantity": 500,
+            "UnitPrice": 0.04184,
+            "TotalPrice": 20.92
+          },
+          {
+            "BreakQuantity": 1000,
+            "UnitPrice": 0.03962,
+            "TotalPrice": 39.62
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": false,
+        "Supplier": {
+          "Id": 296,
+          "Name": "Texas Instruments"
+        },
+        "QuantityAvailableforPackageType": 254681,
+        "MaxQuantityForDistribution": 999999999,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 1,
+        "DigiReelFee": 7.0
+      }
+    ],
+    "QuantityAvailable": 254681,
+    "ProductStatus": {
+      "Id": 0,
+      "Status": "Active"
+    },
+    "BackOrderNotAllowed": false,
+    "NormallyStocking": true,
+    "Discontinued": false,
+    "EndOfLife": false,
+    "Ncnr": false,
+    "PrimaryVideoUrl": null,
+    "Parameters": [
+      {
+        "ParameterId": 247,
+        "ParameterText": "Logic Type",
+        "ParameterType": "String",
+        "ValueId": "313906",
+        "ValueText": "AND Gate"
+      },
+      {
+        "ParameterId": 2094,
+        "ParameterText": "Number of Circuits",
+        "ParameterType": "Double",
+        "ValueId": "1",
+        "ValueText": "1"
+      },
+      {
+        "ParameterId": 667,
+        "ParameterText": "Number of Inputs",
+        "ParameterType": "String",
+        "ValueId": "121326",
+        "ValueText": "2"
+      },
+      {
+        "ParameterId": 5,
+        "ParameterText": "Features",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 276,
+        "ParameterText": "Voltage - Supply",
+        "ParameterType": "String",
+        "ValueId": "56916",
+        "ValueText": "1.65V ~ 5.5V"
+      },
+      {
+        "ParameterId": 2116,
+        "ParameterText": "Current - Quiescent (Max)",
+        "ParameterType": "UnitOfMeasure",
+        "ValueId": "10 \u00b5A",
+        "ValueText": "10 \u00b5A"
+      },
+      {
+        "ParameterId": 592,
+        "ParameterText": "Current - Output High, Low",
+        "ParameterType": "String",
+        "ValueId": "188508",
+        "ValueText": "32mA, 32mA"
+      },
+      {
+        "ParameterId": 1543,
+        "ParameterText": "Input Logic Level - Low",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 1542,
+        "ParameterText": "Input Logic Level - High",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 1552,
+        "ParameterText": "Max Propagation Delay @ V, Max CL",
+        "ParameterType": "String",
+        "ValueId": "228120",
+        "ValueText": "4ns @ 5V, 50pF"
+      },
+      {
+        "ParameterId": 252,
+        "ParameterText": "Operating Temperature",
+        "ParameterType": "String",
+        "ValueId": "212479",
+        "ValueText": "-40\u00b0C ~ 125\u00b0C (TA)"
+      },
+      {
+        "ParameterId": 69,
+        "ParameterText": "Mounting Type",
+        "ParameterType": "String",
+        "ValueId": "409393",
+        "ValueText": "Surface Mount"
+      },
+      {
+        "ParameterId": 1291,
+        "ParameterText": "Supplier Device Package",
+        "ParameterType": "String",
+        "ValueId": "405420",
+        "ValueText": "SOT-23-5"
+      },
+      {
+        "ParameterId": 16,
+        "ParameterText": "Package / Case",
+        "ParameterType": "String",
+        "ValueId": "400230",
+        "ValueText": "SC-74A, SOT-753"
+      }
+    ]
+  },
+  {
+    "Description": {
+      "ProductDescription": "CAP CER 0.1UF 50V X7R 0603",
+      "DetailedDescription": "0.1 \u00b5F \u00b110% 50V Ceramic Capacitor X7R 0603 (1608 Metric)"
+    },
+    "Manufacturer": {
+      "Id": 399,
+      "Name": "KEMET"
+    },
+    "ManufacturerProductNumber": "C0603C104K5RACTU",
+    "UnitPrice": 0.08,
+    "ProductUrl": "https://www.digikey.com/en/products/detail/kemet/C0603C104K5RACTU/1465594",
+    "DatasheetUrl": "https://www.yageogroup.com/content/datasheet/asset/file/KEM_C1002_X7R_SMD",
+    "PhotoUrl": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/5352/0603-%281608-Metric%29-Ceramic-Capacitor.jpg",
+    "ProductVariations": [
+      {
+        "DigiKeyProductNumber": "399-C0603C104K5RACTUTR-ND",
+        "PackageType": {
+          "Id": 1,
+          "Name": "Tape & Reel (TR)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 4000,
+            "UnitPrice": 0.00875,
+            "TotalPrice": 35.0
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 399,
+          "Name": "KEMET"
+        },
+        "QuantityAvailableforPackageType": 13814308,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 4000,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "399-C0603C104K5RACTUCT-ND",
+        "PackageType": {
+          "Id": 2,
+          "Name": "Cut Tape (CT)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.08,
+            "TotalPrice": 0.08
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.011,
+            "TotalPrice": 0.11
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 399,
+          "Name": "KEMET"
+        },
+        "QuantityAvailableforPackageType": 13815328,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "399-C0603C104K5RACTUDKR-ND",
+        "PackageType": {
+          "Id": 243,
+          "Name": "Digi-Reel\u00ae"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.08,
+            "TotalPrice": 0.08
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.011,
+            "TotalPrice": 0.11
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 399,
+          "Name": "KEMET"
+        },
+        "QuantityAvailableforPackageType": 13815328,
+        "MaxQuantityForDistribution": 999999999,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 1,
+        "DigiReelFee": 7.0
+      }
+    ],
+    "QuantityAvailable": 13815328,
+    "ProductStatus": {
+      "Id": 0,
+      "Status": "Active"
+    },
+    "BackOrderNotAllowed": false,
+    "NormallyStocking": true,
+    "Discontinued": false,
+    "EndOfLife": false,
+    "Ncnr": false,
+    "PrimaryVideoUrl": null,
+    "Parameters": [
+      {
+        "ParameterId": 2049,
+        "ParameterText": "Capacitance",
+        "ParameterType": "UnitOfMeasure",
+        "ValueId": "0.1 \u00b5F",
+        "ValueText": "0.1 \u00b5F"
+      },
+      {
+        "ParameterId": 3,
+        "ParameterText": "Tolerance",
+        "ParameterType": "String",
+        "ValueId": "1340",
+        "ValueText": "\u00b110%"
+      },
+      {
+        "ParameterId": 14,
+        "ParameterText": "Voltage - Rated",
+        "ParameterType": "String",
+        "ValueId": "238738",
+        "ValueText": "50V"
+      },
+      {
+        "ParameterId": 17,
+        "ParameterText": "Temperature Coefficient",
+        "ParameterType": "String",
+        "ValueId": "422415",
+        "ValueText": "X7R"
+      },
+      {
+        "ParameterId": 252,
+        "ParameterText": "Operating Temperature",
+        "ParameterType": "String",
+        "ValueId": "242918",
+        "ValueText": "-55\u00b0C ~ 125\u00b0C"
+      },
+      {
+        "ParameterId": 5,
+        "ParameterText": "Features",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 707,
+        "ParameterText": "Ratings",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 405,
+        "ParameterText": "Applications",
+        "ParameterType": "String",
+        "ValueId": "323975",
+        "ValueText": "Bypass, Decoupling"
+      },
+      {
+        "ParameterId": 1531,
+        "ParameterText": "Failure Rate",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 69,
+        "ParameterText": "Mounting Type",
+        "ParameterType": "String",
+        "ValueId": "409416",
+        "ValueText": "Surface Mount, MLCC"
+      },
+      {
+        "ParameterId": 16,
+        "ParameterText": "Package / Case",
+        "ParameterType": "String",
+        "ValueId": "39246",
+        "ValueText": "0603 (1608 Metric)"
+      },
+      {
+        "ParameterId": 46,
+        "ParameterText": "Size / Dimension",
+        "ParameterType": "String",
+        "ValueId": "7802",
+        "ValueText": "0.063\" L x 0.031\" W (1.60mm x 0.80mm)"
+      },
+      {
+        "ParameterId": 1500,
+        "ParameterText": "Height - Seated (Max)",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 1501,
+        "ParameterText": "Thickness (Max)",
+        "ParameterType": "String",
+        "ValueId": "5991",
+        "ValueText": "0.034\" (0.87mm)"
+      },
+      {
+        "ParameterId": 508,
+        "ParameterText": "Lead Spacing",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 4,
+        "ParameterText": "Lead Style",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      }
+    ]
+  },
+  {
+    "Description": {
+      "ProductDescription": "THERMISTOR NTC 10KOHM 3380K 0402",
+      "DetailedDescription": "NTC Thermistor 10k 0402 (1005 Metric)"
+    },
+    "Manufacturer": {
+      "Id": 445,
+      "Name": "TDK Corporation"
+    },
+    "ManufacturerProductNumber": "NTCG103JF103FT1",
+    "UnitPrice": 0.1,
+    "ProductUrl": "https://www.digikey.com/en/products/detail/tdk-corporation/NTCG103JF103FT1/614628",
+    "DatasheetUrl": "https://product.tdk.com/system/files/dam/doc/product/sensor/ntc/chip-ntc-thermistor/catalog/tpd_commercial_ntc-thermistor_ntcg_en.pdf",
+    "PhotoUrl": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/2308/TDK-NTCG-0402.jpg",
+    "ProductVariations": [
+      {
+        "DigiKeyProductNumber": "445-2550-2-ND",
+        "PackageType": {
+          "Id": 1,
+          "Name": "Tape & Reel (TR)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 10000,
+            "UnitPrice": 0.04025,
+            "TotalPrice": 402.5
+          },
+          {
+            "BreakQuantity": 20000,
+            "UnitPrice": 0.03853,
+            "TotalPrice": 770.6
+          },
+          {
+            "BreakQuantity": 30000,
+            "UnitPrice": 0.03759,
+            "TotalPrice": 1127.7
+          },
+          {
+            "BreakQuantity": 50000,
+            "UnitPrice": 0.03648,
+            "TotalPrice": 1824.0
+          },
+          {
+            "BreakQuantity": 70000,
+            "UnitPrice": 0.03578,
+            "TotalPrice": 2504.6
+          },
+          {
+            "BreakQuantity": 100000,
+            "UnitPrice": 0.03507,
+            "TotalPrice": 3507.0
+          },
+          {
+            "BreakQuantity": 250000,
+            "UnitPrice": 0.0334,
+            "TotalPrice": 8350.0
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": false,
+        "Supplier": {
+          "Id": 445,
+          "Name": "TDK Corporation"
+        },
+        "QuantityAvailableforPackageType": 1170000,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 10000,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "445-2550-1-ND",
+        "PackageType": {
+          "Id": 2,
+          "Name": "Cut Tape (CT)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.1,
+            "TotalPrice": 0.1
+          },
+          {
+            "BreakQuantity": 5,
+            "UnitPrice": 0.072,
+            "TotalPrice": 0.36
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.068,
+            "TotalPrice": 0.68
+          },
+          {
+            "BreakQuantity": 25,
+            "UnitPrice": 0.0624,
+            "TotalPrice": 1.56
+          },
+          {
+            "BreakQuantity": 50,
+            "UnitPrice": 0.0588,
+            "TotalPrice": 2.94
+          },
+          {
+            "BreakQuantity": 100,
+            "UnitPrice": 0.0555,
+            "TotalPrice": 5.55
+          },
+          {
+            "BreakQuantity": 500,
+            "UnitPrice": 0.04876,
+            "TotalPrice": 24.38
+          },
+          {
+            "BreakQuantity": 1000,
+            "UnitPrice": 0.04627,
+            "TotalPrice": 46.27
+          },
+          {
+            "BreakQuantity": 5000,
+            "UnitPrice": 0.0413,
+            "TotalPrice": 206.5
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": false,
+        "Supplier": {
+          "Id": 445,
+          "Name": "TDK Corporation"
+        },
+        "QuantityAvailableforPackageType": 1172501,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "445-2550-6-ND",
+        "PackageType": {
+          "Id": 243,
+          "Name": "Digi-Reel\u00ae"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.1,
+            "TotalPrice": 0.1
+          },
+          {
+            "BreakQuantity": 5,
+            "UnitPrice": 0.072,
+            "TotalPrice": 0.36
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.068,
+            "TotalPrice": 0.68
+          },
+          {
+            "BreakQuantity": 25,
+            "UnitPrice": 0.0624,
+            "TotalPrice": 1.56
+          },
+          {
+            "BreakQuantity": 50,
+            "UnitPrice": 0.0588,
+            "TotalPrice": 2.94
+          },
+          {
+            "BreakQuantity": 100,
+            "UnitPrice": 0.0555,
+            "TotalPrice": 5.55
+          },
+          {
+            "BreakQuantity": 500,
+            "UnitPrice": 0.04876,
+            "TotalPrice": 24.38
+          },
+          {
+            "BreakQuantity": 1000,
+            "UnitPrice": 0.04627,
+            "TotalPrice": 46.27
+          },
+          {
+            "BreakQuantity": 5000,
+            "UnitPrice": 0.0413,
+            "TotalPrice": 206.5
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": false,
+        "Supplier": {
+          "Id": 445,
+          "Name": "TDK Corporation"
+        },
+        "QuantityAvailableforPackageType": 1172501,
+        "MaxQuantityForDistribution": 999999999,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 1,
+        "DigiReelFee": 7.0
+      }
+    ],
+    "QuantityAvailable": 1172501,
+    "ProductStatus": {
+      "Id": 0,
+      "Status": "Active"
+    },
+    "BackOrderNotAllowed": false,
+    "NormallyStocking": true,
+    "Discontinued": false,
+    "EndOfLife": false,
+    "Ncnr": false,
+    "PrimaryVideoUrl": "https://www.digikey.com/api/videos/videoplayer/smallplayer/5386655658001",
+    "Parameters": [
+      {
+        "ParameterId": 866,
+        "ParameterText": "Resistance in Ohms @ 25\u00b0C",
+        "ParameterType": "String",
+        "ValueId": "73403",
+        "ValueText": "10k"
+      },
+      {
+        "ParameterId": 867,
+        "ParameterText": "Resistance Tolerance",
+        "ParameterType": "String",
+        "ValueId": "1131",
+        "ValueText": "\u00b11%"
+      },
+      {
+        "ParameterId": 865,
+        "ParameterText": "B Value Tolerance",
+        "ParameterType": "String",
+        "ValueId": "1131",
+        "ValueText": "\u00b11%"
+      },
+      {
+        "ParameterId": 861,
+        "ParameterText": "B0/50",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 862,
+        "ParameterText": "B25/50",
+        "ParameterType": "String",
+        "ValueId": "190192",
+        "ValueText": "3380K"
+      },
+      {
+        "ParameterId": 898,
+        "ParameterText": "B25/75",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 863,
+        "ParameterText": "B25/85",
+        "ParameterType": "String",
+        "ValueId": "191377",
+        "ValueText": "3435K"
+      },
+      {
+        "ParameterId": 864,
+        "ParameterText": "B25/100",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 252,
+        "ParameterText": "Operating Temperature",
+        "ParameterType": "String",
+        "ValueId": "212478",
+        "ValueText": "-40\u00b0C ~ 125\u00b0C"
+      },
+      {
+        "ParameterId": 2109,
+        "ParameterText": "Power - Max",
+        "ParameterType": "UnitOfMeasure",
+        "ValueId": "100 mW",
+        "ValueText": "100 mW"
+      },
+      {
+        "ParameterId": 976,
+        "ParameterText": "Length - Lead Wire",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 69,
+        "ParameterText": "Mounting Type",
+        "ParameterType": "String",
+        "ValueId": "409393",
+        "ValueText": "Surface Mount"
+      },
+      {
+        "ParameterId": 16,
+        "ParameterText": "Package / Case",
+        "ParameterType": "String",
+        "ValueId": "39158",
+        "ValueText": "0402 (1005 Metric)"
+      }
+    ]
+  },
+  {
+    "Description": {
+      "ProductDescription": "LED MP2016 COOL WHITE 6500K 2016",
+      "DetailedDescription": "LED Lighting MP-2016 White, Cool 6500K 3V 60mA 110\u00b0 0806 (2016 Metric)"
+    },
+    "Manufacturer": {
+      "Id": 1214,
+      "Name": "Luminus Devices Inc."
+    },
+    "ManufacturerProductNumber": "MP-2016-1100-65-80",
+    "UnitPrice": 0.1,
+    "ProductUrl": "https://www.digikey.com/en/products/detail/luminus-devices-inc/MP-2016-1100-65-80/5041557",
+    "DatasheetUrl": "https://download.luminus.com/datasheets/Luminus_MP2016_1100_Datasheet.pdf",
+    "PhotoUrl": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/2408/0806%20%282016%20Metric%29.jpg",
+    "ProductVariations": [
+      {
+        "DigiKeyProductNumber": "1214-1531-2-ND",
+        "PackageType": {
+          "Id": 1,
+          "Name": "Tape & Reel (TR)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 5000,
+            "UnitPrice": 0.02481,
+            "TotalPrice": 124.05
+          },
+          {
+            "BreakQuantity": 10000,
+            "UnitPrice": 0.0229,
+            "TotalPrice": 229.0
+          },
+          {
+            "BreakQuantity": 15000,
+            "UnitPrice": 0.02192,
+            "TotalPrice": 328.8
+          },
+          {
+            "BreakQuantity": 25000,
+            "UnitPrice": 0.02081,
+            "TotalPrice": 520.25
+          },
+          {
+            "BreakQuantity": 35000,
+            "UnitPrice": 0.02015,
+            "TotalPrice": 705.25
+          },
+          {
+            "BreakQuantity": 50000,
+            "UnitPrice": 0.0195,
+            "TotalPrice": 975.0
+          },
+          {
+            "BreakQuantity": 125000,
+            "UnitPrice": 0.01807,
+            "TotalPrice": 2258.75
+          },
+          {
+            "BreakQuantity": 250000,
+            "UnitPrice": 0.01717,
+            "TotalPrice": 4292.5
+          },
+          {
+            "BreakQuantity": 500000,
+            "UnitPrice": 0.01641,
+            "TotalPrice": 8205.0
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 1214,
+          "Name": "Luminus Devices Inc."
+        },
+        "QuantityAvailableforPackageType": 2105000,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 5000,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "1214-1531-1-ND",
+        "PackageType": {
+          "Id": 2,
+          "Name": "Cut Tape (CT)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.1,
+            "TotalPrice": 0.1
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.054,
+            "TotalPrice": 0.54
+          },
+          {
+            "BreakQuantity": 100,
+            "UnitPrice": 0.037,
+            "TotalPrice": 3.7
+          },
+          {
+            "BreakQuantity": 500,
+            "UnitPrice": 0.02886,
+            "TotalPrice": 14.43
+          },
+          {
+            "BreakQuantity": 1000,
+            "UnitPrice": 0.02614,
+            "TotalPrice": 26.14
+          },
+          {
+            "BreakQuantity": 2000,
+            "UnitPrice": 0.0238,
+            "TotalPrice": 47.6
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 1214,
+          "Name": "Luminus Devices Inc."
+        },
+        "QuantityAvailableforPackageType": 2106220,
+        "MaxQuantityForDistribution": 999999999,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 1,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "1214-1531-6-ND",
+        "PackageType": {
+          "Id": 243,
+          "Name": "Digi-Reel\u00ae"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.1,
+            "TotalPrice": 0.1
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.054,
+            "TotalPrice": 0.54
+          },
+          {
+            "BreakQuantity": 100,
+            "UnitPrice": 0.037,
+            "TotalPrice": 3.7
+          },
+          {
+            "BreakQuantity": 500,
+            "UnitPrice": 0.02886,
+            "TotalPrice": 14.43
+          },
+          {
+            "BreakQuantity": 1000,
+            "UnitPrice": 0.02614,
+            "TotalPrice": 26.14
+          },
+          {
+            "BreakQuantity": 2000,
+            "UnitPrice": 0.0238,
+            "TotalPrice": 47.6
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 1214,
+          "Name": "Luminus Devices Inc."
+        },
+        "QuantityAvailableforPackageType": 2106220,
+        "MaxQuantityForDistribution": 999999999,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 1,
+        "DigiReelFee": 7.0
+      }
+    ],
+    "QuantityAvailable": 2106220,
+    "ProductStatus": {
+      "Id": 0,
+      "Status": "Active"
+    },
+    "BackOrderNotAllowed": false,
+    "NormallyStocking": true,
+    "Discontinued": false,
+    "EndOfLife": false,
+    "Ncnr": false,
+    "PrimaryVideoUrl": null,
+    "Parameters": [
+      {
+        "ParameterId": 37,
+        "ParameterText": "Color",
+        "ParameterType": "String",
+        "ValueId": "421162",
+        "ValueText": "White, Cool"
+      },
+      {
+        "ParameterId": 1614,
+        "ParameterText": "CCT (K)",
+        "ParameterType": "String",
+        "ValueId": "262302",
+        "ValueText": "6500K"
+      },
+      {
+        "ParameterId": 1649,
+        "ParameterText": "Flux @ 85\u00b0C, Current - Test",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 1648,
+        "ParameterText": "Flux @ 25\u00b0C, Current - Test",
+        "ParameterType": "String",
+        "ValueId": "154733",
+        "ValueText": "24lm (Typ)"
+      },
+      {
+        "ParameterId": 543,
+        "ParameterText": "Current - Test",
+        "ParameterType": "String",
+        "ValueId": "257320",
+        "ValueText": "60mA"
+      },
+      {
+        "ParameterId": 319,
+        "ParameterText": "Voltage - Forward (Vf) (Typ)",
+        "ParameterType": "String",
+        "ValueId": "202627",
+        "ValueText": "3V"
+      },
+      {
+        "ParameterId": 1344,
+        "ParameterText": "Lumens/Watt @ Current - Test",
+        "ParameterType": "String",
+        "ValueId": "90738",
+        "ValueText": "133 lm/W"
+      },
+      {
+        "ParameterId": 1615,
+        "ParameterText": "CRI (Color Rendering Index)",
+        "ParameterType": "String",
+        "ValueId": "285500",
+        "ValueText": "80"
+      },
+      {
+        "ParameterId": 684,
+        "ParameterText": "Current - Max",
+        "ParameterType": "String",
+        "ValueId": "84053",
+        "ValueText": "120mA"
+      },
+      {
+        "ParameterId": 551,
+        "ParameterText": "Viewing Angle",
+        "ParameterType": "String",
+        "ValueId": "77057",
+        "ValueText": "110\u00b0"
+      },
+      {
+        "ParameterId": 69,
+        "ParameterText": "Mounting Type",
+        "ParameterType": "String",
+        "ValueId": "409393",
+        "ValueText": "Surface Mount"
+      },
+      {
+        "ParameterId": 16,
+        "ParameterText": "Package / Case",
+        "ParameterType": "String",
+        "ValueId": "39372",
+        "ValueText": "0806 (2016 Metric)"
+      },
+      {
+        "ParameterId": 1291,
+        "ParameterText": "Supplier Device Package",
+        "ParameterType": "String",
+        "ValueId": "141012",
+        "ValueText": "2016"
+      },
+      {
+        "ParameterId": 46,
+        "ParameterText": "Size / Dimension",
+        "ParameterType": "String",
+        "ValueId": "8582",
+        "ValueText": "0.079\" L x 0.063\" W (2.00mm x 1.60mm)"
+      },
+      {
+        "ParameterId": 1500,
+        "ParameterText": "Height - Seated (Max)",
+        "ParameterType": "String",
+        "ValueId": "5221",
+        "ValueText": "0.020\" (0.52mm)"
+      }
+    ]
+  },
+  {
+    "Description": {
+      "ProductDescription": "SWITCH TACTILE SPST-NO 0.05A 12V",
+      "DetailedDescription": "Tactile Switch SPST-NO Top Actuated Surface Mount"
+    },
+    "Manufacturer": {
+      "Id": 108,
+      "Name": "C&K"
+    },
+    "ManufacturerProductNumber": "PTS526SM15SMTR2 LFS",
+    "UnitPrice": 0.14,
+    "ProductUrl": "https://www.digikey.com/en/products/detail/c-k/PTS526SM15SMTR2-LFS/10056625",
+    "DatasheetUrl": "https://www.ckswitches.com/media/2780/pts526.pdf",
+    "PhotoUrl": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/308/PTS526-SK15-SMTR2-LFS.JPG",
+    "ProductVariations": [
+      {
+        "DigiKeyProductNumber": "CKN12220-2-ND",
+        "PackageType": {
+          "Id": 1,
+          "Name": "Tape & Reel (TR)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 4000,
+            "UnitPrice": 0.07924,
+            "TotalPrice": 316.96
+          },
+          {
+            "BreakQuantity": 8000,
+            "UnitPrice": 0.07506,
+            "TotalPrice": 600.48
+          },
+          {
+            "BreakQuantity": 12000,
+            "UnitPrice": 0.0728,
+            "TotalPrice": 873.6
+          },
+          {
+            "BreakQuantity": 20000,
+            "UnitPrice": 0.07016,
+            "TotalPrice": 1403.2
+          },
+          {
+            "BreakQuantity": 28000,
+            "UnitPrice": 0.06854,
+            "TotalPrice": 1919.12
+          },
+          {
+            "BreakQuantity": 40000,
+            "UnitPrice": 0.06692,
+            "TotalPrice": 2676.8
+          },
+          {
+            "BreakQuantity": 100000,
+            "UnitPrice": 0.06322,
+            "TotalPrice": 6322.0
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 108,
+          "Name": "C&K"
+        },
+        "QuantityAvailableforPackageType": 210500,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 4000,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "CKN12220-1-ND",
+        "PackageType": {
+          "Id": 2,
+          "Name": "Cut Tape (CT)"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.14,
+            "TotalPrice": 0.14
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.127,
+            "TotalPrice": 1.27
+          },
+          {
+            "BreakQuantity": 25,
+            "UnitPrice": 0.1192,
+            "TotalPrice": 2.98
+          },
+          {
+            "BreakQuantity": 100,
+            "UnitPrice": 0.1073,
+            "TotalPrice": 10.73
+          },
+          {
+            "BreakQuantity": 250,
+            "UnitPrice": 0.09968,
+            "TotalPrice": 24.92
+          },
+          {
+            "BreakQuantity": 500,
+            "UnitPrice": 0.09408,
+            "TotalPrice": 47.04
+          },
+          {
+            "BreakQuantity": 1000,
+            "UnitPrice": 0.08878,
+            "TotalPrice": 88.78
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 108,
+          "Name": "C&K"
+        },
+        "QuantityAvailableforPackageType": 211125,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 0,
+        "DigiReelFee": 0.0
+      },
+      {
+        "DigiKeyProductNumber": "CKN12220-6-ND",
+        "PackageType": {
+          "Id": 243,
+          "Name": "Digi-Reel\u00ae"
+        },
+        "StandardPricing": [
+          {
+            "BreakQuantity": 1,
+            "UnitPrice": 0.14,
+            "TotalPrice": 0.14
+          },
+          {
+            "BreakQuantity": 10,
+            "UnitPrice": 0.127,
+            "TotalPrice": 1.27
+          },
+          {
+            "BreakQuantity": 25,
+            "UnitPrice": 0.1192,
+            "TotalPrice": 2.98
+          },
+          {
+            "BreakQuantity": 100,
+            "UnitPrice": 0.1073,
+            "TotalPrice": 10.73
+          },
+          {
+            "BreakQuantity": 250,
+            "UnitPrice": 0.09968,
+            "TotalPrice": 24.92
+          },
+          {
+            "BreakQuantity": 500,
+            "UnitPrice": 0.09408,
+            "TotalPrice": 47.04
+          },
+          {
+            "BreakQuantity": 1000,
+            "UnitPrice": 0.08878,
+            "TotalPrice": 88.78
+          }
+        ],
+        "MyPricing": [],
+        "MarketPlace": false,
+        "TariffActive": true,
+        "Supplier": {
+          "Id": 108,
+          "Name": "C&K"
+        },
+        "QuantityAvailableforPackageType": 211125,
+        "MaxQuantityForDistribution": 0,
+        "MinimumOrderQuantity": 1,
+        "StandardPackage": 0,
+        "DigiReelFee": 7.0
+      }
+    ],
+    "QuantityAvailable": 211125,
+    "ProductStatus": {
+      "Id": 0,
+      "Status": "Active"
+    },
+    "BackOrderNotAllowed": false,
+    "NormallyStocking": true,
+    "Discontinued": false,
+    "EndOfLife": false,
+    "Ncnr": false,
+    "PrimaryVideoUrl": null,
+    "Parameters": [
+      {
+        "ParameterId": 130,
+        "ParameterText": "Circuit",
+        "ParameterType": "String",
+        "ValueId": "406606",
+        "ValueText": "SPST-NO"
+      },
+      {
+        "ParameterId": 235,
+        "ParameterText": "Switch Function",
+        "ParameterType": "String",
+        "ValueId": "381660",
+        "ValueText": "Off-Mom"
+      },
+      {
+        "ParameterId": 542,
+        "ParameterText": "Contact Rating @ Voltage",
+        "ParameterType": "String",
+        "ValueId": "7473",
+        "ValueText": "0.05A @ 12VDC"
+      },
+      {
+        "ParameterId": 545,
+        "ParameterText": "Actuator Type",
+        "ParameterType": "String",
+        "ValueId": "407938",
+        "ValueText": "Standard"
+      },
+      {
+        "ParameterId": 69,
+        "ParameterText": "Mounting Type",
+        "ParameterType": "String",
+        "ValueId": "409393",
+        "ValueText": "Surface Mount"
+      },
+      {
+        "ParameterId": 1547,
+        "ParameterText": "Actuator Height off PCB, Vertical",
+        "ParameterType": "String",
+        "ValueId": "53662",
+        "ValueText": "1.50mm"
+      },
+      {
+        "ParameterId": 2014,
+        "ParameterText": "Actuator Length, Right Angle",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 1548,
+        "ParameterText": "Actuator Orientation",
+        "ParameterType": "String",
+        "ValueId": "413829",
+        "ValueText": "Top Actuated"
+      },
+      {
+        "ParameterId": 258,
+        "ParameterText": "Termination Style",
+        "ParameterType": "String",
+        "ValueId": "352076",
+        "ValueText": "Gull Wing"
+      },
+      {
+        "ParameterId": 567,
+        "ParameterText": "Outline",
+        "ParameterType": "String",
+        "ValueId": "231039",
+        "ValueText": "5.20mm x 5.20mm"
+      },
+      {
+        "ParameterId": 528,
+        "ParameterText": "Illumination",
+        "ParameterType": "String",
+        "ValueId": "380363",
+        "ValueText": "Non-Illuminated"
+      },
+      {
+        "ParameterId": 522,
+        "ParameterText": "Illumination Type, Color",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 524,
+        "ParameterText": "Illumination Voltage (Nominal)",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 550,
+        "ParameterText": "Operating Force",
+        "ParameterType": "String",
+        "ValueId": "105797",
+        "ValueText": "160gf"
+      },
+      {
+        "ParameterId": 697,
+        "ParameterText": "Ingress Protection",
+        "ParameterType": "String",
+        "ValueId": "359893",
+        "ValueText": "IP40"
+      },
+      {
+        "ParameterId": 5,
+        "ParameterText": "Features",
+        "ParameterType": "String",
+        "ValueId": "1",
+        "ValueText": "-"
+      },
+      {
+        "ParameterId": 252,
+        "ParameterText": "Operating Temperature",
+        "ParameterType": "String",
+        "ValueId": "212617",
+        "ValueText": "-40\u00b0C ~ 85\u00b0C"
+      }
+    ]
+  }
+]

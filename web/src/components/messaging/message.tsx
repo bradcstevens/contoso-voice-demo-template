@@ -8,6 +8,7 @@ import { fetchCachedImage } from "@/store/images";
 import Waiting from "./waiting";
 import { HiOutlineSpeakerWave } from "react-icons/hi2";
 import { BiSolidUserCircle } from "react-icons/bi";
+import ChatProductCards from "./chat-product-cards";
 
 type Props = {
   turn: Turn;
@@ -19,7 +20,7 @@ const getAvatar = (turn: Turn) => {
     return (
       <img
         className={styles.assistantIcon}
-        src={"/images/trees.png"}
+        src={"/images/robot-agent.svg"}
         alt="Assistant"
       />
     );
@@ -75,6 +76,9 @@ const MessageData = ({ turn, notify }: Props) => {
             </>
           ) : (
             <Markdown remarkPlugins={[remarkGfm]}>{turn.message}</Markdown>
+          )}
+          {turn.products && turn.products.length > 0 && (
+            <ChatProductCards products={turn.products} />
           )}
         </div>
       );

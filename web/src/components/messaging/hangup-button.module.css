@@ -1,0 +1,44 @@
+/* Hangup Button - red phone icon to end an active voice call.
+   Follows the same button pattern as microphone-button.module.css
+   and uses the decline circle style from incoming-call.module.css. */
+
+.hangupButton {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border-width: 0px;
+  border-style: solid;
+  outline: 2px solid var(--color-red-400);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-red-500);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: background-color 0.2s ease, outline-color 0.2s ease;
+  animation: hangupPulse 2s ease-in-out infinite;
+}
+
+.hangupButton:hover {
+  outline: 2px solid var(--color-red-600);
+  background-color: var(--color-red-600);
+}
+
+.hangupIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-white);
+}
+
+/* Subtle pulse to draw attention that voice is active */
+@keyframes hangupPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
