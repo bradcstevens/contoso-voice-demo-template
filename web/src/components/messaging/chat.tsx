@@ -3,8 +3,8 @@ import Message from "./message";
 import styles from "./chat.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { GrPowerReset, GrClose, GrBeacon } from "react-icons/gr";
-import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
-import { HiOutlinePaperAirplane } from "react-icons/hi2";
+import { FiSettings } from "react-icons/fi";
+import { HiOutlineChatBubbleLeftRight, HiOutlinePaperAirplane, HiOutlineSparkles, HiPlus } from "react-icons/hi2";
 import { ChatState, useChatStore, AssistantName } from "@/store/chat";
 import usePersistStore from "@/store/usePersistStore";
 import FileImagePicker from "./fileimagepicker";
@@ -23,6 +23,7 @@ import {
 import { useInlineVoice } from "@/store/voice/use-inline-voice";
 import MicrophoneButton from "./microphone-button";
 import IncomingCallOverlay from "./incoming-call";
+import VoiceSettings from "./voicesettings";
 import { detectCallTrigger } from "@/store/call-trigger";
 
 interface ChatOptions {
@@ -48,6 +49,12 @@ const Chat = ({ options }: Props) => {
   /** Text chat connection state (via /api/chat) */
   const [chatConnected, setChatConnected] = useState(false);
   const chatClientRef = useRef<ChatClient | null>(null);
+
+  /** Voice settings panel state */
+  const [voiceSettingsOpen, setVoiceSettingsOpen] = useState(false);
+
+  /** Attach menu state (file/video pickers) */
+  const [attachMenuOpen, setAttachMenuOpen] = useState(false);
 
   /** Incoming call overlay state -- shown when assistant triggers a voice call */
   const [showIncomingCall, setShowIncomingCall] = useState(false);
@@ -601,16 +608,11 @@ const Chat = ({ options }: Props) => {
                 onClick={() => clear()}
               />
               <div className={"grow"} />
-              <div>
-                <GrBeacon
-                  size={18}
-                  className={clsx(
-                    styles.chatIcon,
-                    isConnected ? styles.connected : styles.disconnected
-                  )}
-                  onClick={() => manageConnection()}
-                />
+              <div className={styles.chatTitle}>
+                <HiOutlineSparkles size={20} />
+                <span>DigiKey AI Chat</span>
               </div>
+              <div className={"grow"} />
               <div>
                 <GrClose
                   size={18}
@@ -619,25 +621,43 @@ const Chat = ({ options }: Props) => {
                 />
               </div>
             </div>
-            {/* chat section */}
-            <div className={styles.chatSection} ref={chatDiv}>
-              <div className={styles.chatMessages}>
-                {state &&
-                  state.turns.map((turn, index) => (
-                    <Message key={index} turn={turn} notify={scrollChat} />
-                  ))}
+            {/* voice settings panel (replaces chat section when open) */}
+            {voiceSettingsOpen ? (
+              <div className={styles.voiceSettingsPanel}>
+                <VoiceSettings />
               </div>
-            </div>
-            {/* image section */}
-            {currentImage && (
-              <div className={styles.chatImageSection}>
-                <img
-                  src={currentImage}
-                  className={styles.chatImage}
-                  alt="Current Image"
-                  onClick={() => clearImage()}
-                />
-              </div>
+            ) : (
+              <>
+                {/* chat section */}
+                <div className={styles.chatSection} ref={chatDiv}>
+                  <div className={styles.chatMessages}>
+                    <div className={styles.aiDisclaimer}>
+                      <p>
+                        Responses are generated using artificial intelligence (AI).
+                        By using this chatbot, you acknowledge that recommendations
+                        are AI-generated and may not fully reflect your individual
+                        needs. We may maintain a transcript of chats for quality
+                        assurance and to improve our AI models.
+                      </p>
+                    </div>
+                    {state &&
+                      state.turns.map((turn, index) => (
+                        <Message key={index} turn={turn} notify={scrollChat} />
+                      ))}
+                  </div>
+                </div>
+                {/* image section */}
+                {currentImage && (
+                  <div className={styles.chatImageSection}>
+                    <img
+                      src={currentImage}
+                      className={styles.chatImage}
+                      alt="Current Image"
+                      onClick={() => clearImage()}
+                    />
+                  </div>
+                )}
+              </>
             )}
             {/* chat input section */}
             <div className={styles.chatInputSection}>
@@ -645,33 +665,81 @@ const Chat = ({ options }: Props) => {
                 id="chat"
                 name="chat"
                 type="text"
+                placeholder="Ask anything"
                 title="Type a message"
                 value={state ? state.message : ""}
                 onChange={(e) => state && state.setMessage(e.target.value)}
                 onKeyUp={(e) => {
                   if (e.code === "Enter") sendMessage();
                 }}
+                onFocus={() => setAttachMenuOpen(false)}
                 className={styles.chatInput}
               />
-              {options && options.file && (
-                <FileImagePicker setCurrentImage={state.setCurrentImage} />
-              )}
-              {options && options.video && (
-                <VideoImagePicker setCurrentImage={state.setCurrentImage} />
-              )}
-              <MicrophoneButton
-                isActive={voiceConnected}
-                disabled={false}
-                onClick={toggleVoice}
-              />
-              <button
-                type="button"
-                title="Send Message"
-                className={"button"}
-                onClick={sendMessage}
-              >
-                <HiOutlinePaperAirplane size={24} className={"buttonIcon"} />
-              </button>
+              <div className={styles.chatInputToolbar}>
+                <div className={styles.chatInputToolbarLeft}>
+                  {(options?.file || options?.video) && (
+                    <div className={styles.attachWrapper}>
+                      <button
+                        type="button"
+                        title="Attach"
+                        className={styles.chatToolbarButton}
+                        onClick={() => setAttachMenuOpen(!attachMenuOpen)}
+                      >
+                        <HiPlus size={18} />
+                      </button>
+                      {attachMenuOpen && (
+                        <div className={styles.attachMenu}>
+                          {options.file && (
+                            <div
+                              className={styles.attachMenuItem}
+                              onClick={() => setAttachMenuOpen(false)}
+                            >
+                              <FileImagePicker setCurrentImage={state.setCurrentImage} />
+                              <span>Upload image</span>
+                            </div>
+                          )}
+                          {options.video && (
+                            <div
+                              className={styles.attachMenuItem}
+                              onClick={() => setAttachMenuOpen(false)}
+                            >
+                              <VideoImagePicker setCurrentImage={state.setCurrentImage} />
+                              <span>Use camera</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <div className={styles.chatInputToolbarRight}>
+                  <button
+                    type="button"
+                    title="Voice Settings"
+                    className={styles.chatToolbarButton}
+                    onClick={() => setVoiceSettingsOpen(!voiceSettingsOpen)}
+                  >
+                    {voiceSettingsOpen ? (
+                      <GrClose size={18} />
+                    ) : (
+                      <FiSettings size={18} />
+                    )}
+                  </button>
+                  <MicrophoneButton
+                    isActive={voiceConnected}
+                    disabled={false}
+                    onClick={toggleVoice}
+                  />
+                  <button
+                    type="button"
+                    title="Send Message"
+                    className={styles.chatSendCircle}
+                    onClick={sendMessage}
+                  >
+                    <HiOutlinePaperAirplane size={18} />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}

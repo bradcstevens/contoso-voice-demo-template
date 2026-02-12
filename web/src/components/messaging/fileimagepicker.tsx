@@ -32,13 +32,11 @@ const FileImagePicker = ({ setCurrentImage }: Props) => {
 
   return (
     <>
-      <button
-        title="Pick an image"
-        className={"button"}
+      <IoCameraOutline
+        size={18}
+        style={{ color: "var(--color-zinc-500)", flexShrink: 0 }}
         onClick={activateFileInput}
-      >
-        <IoCameraOutline className={"buttonIcon"} />
-      </button>
+      />
       <input
         type="file"
         className="hidden"

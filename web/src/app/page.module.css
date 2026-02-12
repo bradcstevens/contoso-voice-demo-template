@@ -24,27 +24,25 @@
 .sidebarHeader {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--dk-border);
-  background-color: var(--color-white);
+  justify-content: space-between;
+  padding: 1rem 1.25rem 0.625rem;
 }
 
 .sidebarTitle {
-  font-size: 0.8125rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 800;
   color: var(--dk-dark);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
 .sidebarViewAll {
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--dk-red);
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
 .sidebarViewAll:hover {
@@ -55,25 +53,28 @@
 .categoryList {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.25rem 0 0.75rem;
 }
 
 .categoryItem {
-  border-bottom: 1px solid var(--dk-border);
+  /* no border between items — clean list like digikey.com */
 }
 
 .categoryLink {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.4375rem 1.25rem;
   font-size: 0.8125rem;
-  color: var(--dk-blue);
+  font-weight: 500;
+  color: var(--dk-dark);
   text-decoration: none;
-  transition: background-color 0.15s ease-in-out;
+  border-left: 3px solid transparent;
+  transition: color 0.12s ease, border-color 0.12s ease;
 }
 
 .categoryLink:hover {
-  background-color: var(--dk-gray-bg);
-  text-decoration: underline;
+  color: var(--dk-red);
+  border-left-color: var(--dk-red);
+  font-weight: 600;
 }
 
 /* ============================================
@@ -95,14 +96,7 @@
   .categoryList {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .categoryItem {
-    border-right: 1px solid var(--dk-border);
-  }
-
-  .categoryItem:nth-child(even) {
-    border-right: none;
+    padding: 0.25rem 0;
   }
 
 }

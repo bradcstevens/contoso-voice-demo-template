@@ -113,7 +113,7 @@ const Message = ({ turn, notify }: Props) => {
       }
     >
       <MessageData turn={turn} notify={notify} />
-      {getAvatar(turn)}
+      {turn.type !== "assistant" && getAvatar(turn)}
     </div>
   );
 };

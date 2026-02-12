@@ -52,13 +52,13 @@
 }
 
 .logoGrid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
   flex: 1;
   gap: 0.75rem;
 }
 
 .logoCard {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;

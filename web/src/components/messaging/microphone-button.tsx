@@ -29,9 +29,9 @@ const MicrophoneButton = ({
       onClick={onClick}
     >
       {isActive ? (
-        <FiMicOff size={24} className={styles.micIconActive} />
+        <FiMicOff size={18} className={styles.micIconActive} />
       ) : (
-        <HiMicrophone size={24} className={styles.micIcon} />
+        <HiMicrophone size={18} className={styles.micIcon} />
       )}
     </button>
   );

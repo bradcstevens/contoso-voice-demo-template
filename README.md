@@ -1,30 +1,38 @@
 # DigiKey Web Voice Agent
 
-An AI-powered voice and text assistant for DigiKey Electronics that provides personalized product recommendations and customer support through natural conversations. Built with a Next.js frontend, a Python FastAPI backend, and Azure OpenAI for both text chat (GPT-4o) and real-time voice (Realtime API).
+An AI-powered voice and text assistant for DigiKey Electronics that provides personalized product recommendations and customer support through natural conversations. Built with a Next.js frontend, a Python FastAPI backend, and Azure OpenAI for both text chat (Model Router) and real-time voice (gpt-realtime-mini).
 
 ## Architecture
 
-```
-+-----------------+    WebSocket / HTTP    +------------------+
-|   Next.js       |<--------------------->|   FastAPI         |
-|   Frontend      |                       |   Backend         |
-|   (Port 3000)   |                       |   (Port 8000)     |
-|                 |    Real-time Audio     |                   |
-|   Web Audio API |---------------------->|                   |
-+-----------------+    (WebSocket)        +------------------+
-                                                   |
-                                                   | Azure OpenAI
-                                                   v
-                                          +------------------+
-                                          |  GPT-4o (Chat)   |
-                                          |  Realtime API    |
-                                          |  (Voice)         |
-                                          +------------------+
+```mermaid
+graph LR
+    subgraph Frontend["Next.js Frontend :3000"]
+        UI[React UI<br/>Zustand State]
+        WA[Web Audio API]
+    end
+
+    subgraph Backend["FastAPI Backend :8000"]
+        Chat["/ws/chat<br/>Text Chat"]
+        Voice["/ws/voice<br/>Voice Stream"]
+        Suggest["Suggestions<br/>Engine"]
+    end
+
+    subgraph Azure["Azure OpenAI"]
+        MR["Model Router<br/>(Chat Completions)"]
+        RT["gpt-realtime-mini<br/>(Realtime Voice API)"]
+    end
+
+    UI -- "WebSocket<br/>messages" --> Chat
+    WA -- "WebSocket<br/>audio frames" --> Voice
+    Chat --> MR
+    Chat --> Suggest
+    Suggest --> MR
+    Voice -- "Realtime<br/>WebSocket" --> RT
 ```
 
 **Frontend** -- Next.js 14 (App Router), TypeScript, Zustand for state management, Web Audio API for microphone capture and playback, WebSocket client for real-time chat and voice streaming.
 
-**Backend** -- Python FastAPI with WebSocket endpoints for text chat and voice. Integrates with Azure OpenAI GPT-4o for chat completions and the Azure OpenAI Realtime API for voice conversations. Uses the Prompty framework for structured prompt management.
+**Backend** -- Python FastAPI with WebSocket endpoints for text chat and voice. Integrates with Azure OpenAI Model Router for chat completions and gpt-realtime-mini via the Realtime API for voice conversations. Uses the Prompty framework for structured prompt management.
 
 **Data** -- Product catalog, purchase history, and manufacturer data stored as JSON files. AI-powered product suggestion engine generates recommendations based on conversation context.
 
@@ -33,8 +41,8 @@ An AI-powered voice and text assistant for DigiKey Electronics that provides per
 - **Node.js** 18+ and npm
 - **Python** 3.10+
 - **Azure OpenAI** resource with the following deployments:
-  - `gpt-4o` -- for text chat and suggestions
-  - `gpt-4o-realtime-preview` or `gpt-realtime` -- for voice conversations
+  - `model-router` -- Azure Model Router for text chat and suggestions
+  - `gpt-realtime-mini` -- for real-time voice conversations
 - A browser that supports the Web Audio API and `getUserMedia` (Chrome, Edge, etc.)
 
 ## Setup
@@ -62,8 +70,8 @@ Edit `api/.env` and fill in your Azure OpenAI credentials:
 | `AZURE_VOICE_KEY` | Azure Cognitive Services API key |
 | `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint for chat completions |
 | `AZURE_OPENAI_API_KEY` | Azure OpenAI API key |
-| `AZURE_VOICE_DEPLOYMENT` | Realtime API deployment name (default: `gpt-realtime`) |
-| `AZURE_OPENAI_DEPLOYMENT` | Chat deployment name (default: `gpt-4o`) |
+| `AZURE_VOICE_DEPLOYMENT` | Realtime API deployment name (default: `gpt-realtime-mini`) |
+| `AZURE_OPENAI_DEPLOYMENT` | Chat deployment name (default: `model-router`) |
 | `AZURE_VOICE_API_MODE` | `ga` or `preview` (see `api/.env.example` for details) |
 | `LOCAL_TRACING_ENABLED` | Enable local tracing (default: `true`) |
 

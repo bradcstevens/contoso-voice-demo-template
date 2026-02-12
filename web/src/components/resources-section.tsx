@@ -11,20 +11,22 @@ function ResourceIcon({ id }: { id: "tools" | "services" | "content" }) {
       return (
         <svg
           className={styles.icon}
-          viewBox="0 0 120 120"
+          viewBox="0 0 160 120"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
-          {/* Red circle ring */}
-          <circle cx="60" cy="60" r="48" stroke="#cc0000" strokeWidth="20" />
-          {/* Notch at top-left */}
-          <rect x="10" y="8" width="22" height="22" rx="2" fill="white" />
-          {/* Hexagon in center */}
+          {/* Wrench handle extending left */}
+          <rect x="0" y="34" width="70" height="52" fill="#e84422" />
+          {/* Red filled circle (wrench head) */}
+          <circle cx="75" cy="60" r="50" fill="#e84422" />
+          {/* White inner circle (jaw opening) */}
+          <circle cx="75" cy="60" r="26" fill="white" />
+          {/* Hex nut overlapping right side */}
           <polygon
-            points="60,28 87.7,44 87.7,76 60,92 32.3,76 32.3,44"
-            fill="none"
-            stroke="#1a1a1a"
+            points="105,30 135,47 135,73 105,90 75,73 75,47"
+            fill="white"
+            stroke="#1a1a2e"
             strokeWidth="5"
             strokeLinejoin="round"
           />

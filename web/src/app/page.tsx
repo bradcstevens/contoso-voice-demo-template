@@ -7,7 +7,6 @@ import FeaturedProducts from "@/components/featured-products";
 import FeaturedManufacturers from "@/components/featured-manufacturers";
 import ValueProps from "@/components/value-props";
 import CompanyDescription from "@/components/company-description";
-import Voice from "@/components/messaging/voice";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import HeroCarousel from "@/components/hero-carousel";
@@ -70,7 +69,6 @@ const Home = async () => {
       </div>
 
       <Chat options={{ video: true, file: true }} />
-      <Voice />
       <Footer />
     </>
   );

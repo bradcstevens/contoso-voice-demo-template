@@ -202,13 +202,11 @@ const VideoImagePicker = ({ setCurrentImage }: Props) => {
           </div>
         </div>
       )}
-      <button
-        title="Use Video Image"
-        className={"button"}
+      <HiOutlineVideoCamera
+        size={18}
+        style={{ color: "var(--color-zinc-500)", flexShrink: 0 }}
         onClick={() => showVideo()}
-      >
-        <HiOutlineVideoCamera className={"buttonIcon"} />
-      </button>
+      />
     </>
   );
 };

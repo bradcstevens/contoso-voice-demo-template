@@ -1,13 +1,12 @@
 /* ============================================
    Featured Products Section
-   Horizontal product cards with manufacturer
-   badges, placed below Resources section,
-   matching DigiKey homepage layout.
+   Horizontal scrolling product carousel with
+   manufacturer badges, matching DigiKey layout.
    ============================================ */
 
 .featuredSection {
   background-color: var(--color-white);
-  padding: 1.5rem 0 2rem;
+  padding: 1.25rem 0 1.5rem;
   border-bottom: 1px solid var(--dk-border);
 }
 
@@ -17,16 +16,57 @@
   padding: 0 2rem;
 }
 
-/* ---- Section Heading ---- */
+/* ---- Section Header ---- */
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
 
 .sectionHeading {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--dk-dark);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin: 0 0 1rem 0;
+  margin: 0;
 }
+
+/* ---- Carousel Wrapper (arrows + track) ---- */
+
+.carouselWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carouselBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--dk-border);
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--dk-dark);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.carouselBtn:hover {
+  background-color: var(--dk-gray-bg);
+  border-color: var(--color-zinc-400);
+}
+
+.carouselBtnLeft {}
+.carouselBtnRight {}
 
 /* ---- Manufacturer Badges ---- */
 
@@ -34,7 +74,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .manufacturerBadge {
@@ -58,23 +98,37 @@
   color: var(--dk-blue);
 }
 
-/* ---- Product Cards Grid ---- */
+/* ---- Product Carousel ---- */
 
-.productGrid {
+.productCarousel {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.productCarousel::-webkit-scrollbar {
+  display: none;
 }
 
 .productCard {
   display: flex;
   flex-direction: column;
-  width: 220px;
+  /* 4 cards visible: (100% - 3 gaps) / 4 */
+  min-width: calc((100% - 3rem) / 4);
+  width: calc((100% - 3rem) / 4);
+  flex-shrink: 0;
   border: 1px solid var(--dk-border);
   border-radius: 4px;
   background-color: var(--color-white);
   overflow: hidden;
   transition: box-shadow 0.2s ease-in-out;
+  scroll-snap-align: start;
 }
 
 .productCard:hover {
@@ -96,10 +150,10 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 160px;
+  height: 180px;
   background-color: var(--color-white);
   border-bottom: 1px solid var(--dk-border);
-  padding: 0.75rem;
+  padding: 1rem;
 }
 
 .cardImage {
@@ -159,18 +213,8 @@
     padding: 0 1rem;
   }
 
-  .productGrid {
-    gap: 0.75rem;
-  }
-
   .productCard {
-    width: calc(50% - 0.375rem);
-    min-width: 150px;
-  }
-}
-
-@media (max-width: 480px) {
-  .productCard {
-    width: 100%;
+    min-width: 180px;
+    width: 180px;
   }
 }

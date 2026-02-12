@@ -2,7 +2,7 @@
 
 import styles from "./section.module.css";
 import type { CategoryWithProducts } from "@/types/digikey";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   getProductDisplayName,
   formatElectronicsPrice,
@@ -41,13 +41,39 @@ type Props = {
 };
 
 const Section = ({ category }: Props) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = 480;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section id={category.slug} className={styles.categorySection}>
       <div className={styles.categoryInner}>
-        <h2 className={styles.categoryTitle}>{category.name}</h2>
-        <p className={styles.categoryDescription}>{category.description}</p>
+        <div className={styles.categoryHeader}>
+          <div>
+            <h2 className={styles.categoryTitle}>{category.name}</h2>
+            <p className={styles.categoryDescription}>
+              {category.description}
+            </p>
+          </div>
+        </div>
 
-        <div className={styles.productGrid}>
+        <div className={styles.carouselWrapper}>
+          <button
+            type="button"
+            className={`${styles.carouselBtn} ${styles.carouselBtnLeft}`}
+            onClick={() => scroll("left")}
+            aria-label="Scroll left"
+          >
+            &#8249;
+          </button>
+          <div className={styles.productCarousel} ref={scrollRef}>
           {category.products.map((product) => (
             <div
               key={product.ManufacturerProductNumber}
@@ -91,6 +117,15 @@ const Section = ({ category }: Props) => {
               </a>
             </div>
           ))}
+          </div>
+          <button
+            type="button"
+            className={`${styles.carouselBtn} ${styles.carouselBtnRight}`}
+            onClick={() => scroll("right")}
+            aria-label="Scroll right"
+          >
+            &#8250;
+          </button>
         </div>
       </div>
     </section>
