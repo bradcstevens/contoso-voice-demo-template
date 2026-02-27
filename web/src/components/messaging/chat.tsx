@@ -25,6 +25,7 @@ import MicrophoneButton from "./microphone-button";
 import IncomingCallOverlay from "./incoming-call";
 import VoiceSettings from "./voicesettings";
 import { detectCallTrigger } from "@/store/call-trigger";
+import Content from "./content";
 
 interface ChatOptions {
   video?: boolean;
@@ -59,6 +60,12 @@ const Chat = ({ options }: Props) => {
   /** Incoming call overlay state -- shown when assistant triggers a voice call */
   const [showIncomingCall, setShowIncomingCall] = useState(false);
   const checkForCallTriggerRef = useRef<() => void>(() => {});
+  const checkForSuggestionsRef = useRef<() => void>(() => {});
+
+  /** Suggestion popup state -- shown when the backend streams product suggestions */
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const showSuggestionsRef = useRef(false);
+  const suggestionContentRef = useRef<string[]>([]);
 
   /** Derive chat history for the realtime manager */
   const chatHistory: SimpleMessage[] = (state?.turns ?? []).map((turn) => ({
@@ -381,10 +388,13 @@ const Chat = ({ options }: Props) => {
     }
   }, []);
 
-  // Keep the ref current so the ChatClient effect closure can use it
+  // Keep refs current so the ChatClient effect closure can use them
   useEffect(() => {
     checkForCallTriggerRef.current = checkForCallTrigger;
   }, [checkForCallTrigger]);
+  useEffect(() => {
+    checkForSuggestionsRef.current = checkForSuggestions;
+  }, [checkForSuggestions]);
 
   /** Accept the incoming call -- connect voice */
   const handleAcceptCall = useCallback(async () => {
@@ -460,6 +470,8 @@ const Chat = ({ options }: Props) => {
           stateRef.current.completeAssistantMessage();
           // Check the completed message for call trigger phrases
           checkForCallTriggerRef.current();
+          // Check if the text conversation warrants showing product suggestions
+          checkForSuggestionsRef.current();
         }
       },
       onAssistantFull: (message: string) => {
@@ -467,6 +479,8 @@ const Chat = ({ options }: Props) => {
           stateRef.current.addAssistantMessage(AssistantName, message);
           // Check the full message for call trigger phrases
           checkForCallTriggerRef.current();
+          // Check if the text conversation warrants showing product suggestions
+          checkForSuggestionsRef.current();
         }
       },
       onContext: (ctx: string) => {
@@ -513,6 +527,30 @@ const Chat = ({ options }: Props) => {
   useEffect(() => {
     contextRef.current = context;
   }, [context]);
+
+  // Show/hide the suggestions popup based on the context store's suggestion data.
+  // Opens when suggestion data arrives (streamed by checkForSuggestions),
+  // closes when the store is cleared (e.g. reset button calls clearContext()).
+  useEffect(() => {
+    if (context && context.suggestion.length > 0 && !showSuggestionsRef.current) {
+      suggestionContentRef.current = context.suggestion;
+      setShowSuggestions(true);
+      showSuggestionsRef.current = true;
+    } else if (context && context.suggestion.length === 0 && showSuggestionsRef.current) {
+      setShowSuggestions(false);
+      showSuggestionsRef.current = false;
+      suggestionContentRef.current = [];
+    }
+  }, [context?.suggestion]);
+
+  const onCloseSuggestions = useCallback(() => {
+    setShowSuggestions(false);
+    showSuggestionsRef.current = false;
+    suggestionContentRef.current = [];
+    if (contextRef.current) {
+      contextRef.current.setSuggestion([]);
+    }
+  }, []);
 
   /** Send text message via /api/chat (not voice) */
   const sendMessage = async () => {
@@ -742,6 +780,13 @@ const Chat = ({ options }: Props) => {
               </div>
             </div>
           </div>
+        )}
+        {/* Suggestion popup -- shown when the backend streams product suggestions */}
+        {state?.open && showSuggestions && (
+          <Content
+            suggestions={context?.suggestion ?? suggestionContentRef.current}
+            onClose={onCloseSuggestions}
+          />
         )}
         <div
           className={styles.chatButton}
